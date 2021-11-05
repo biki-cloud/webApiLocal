@@ -1,0 +1,7 @@
+INFO: 2021/11/05 22:09:28 main.go:69: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/05 22:11:41 main.go:125: -- File Upload to server --
+INFO: 2021/11/05 22:11:41 main.go:128: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/05 22:11:41 main.go:69: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/05 22:11:41 main.go:70: uploadFile: test.txt
+INFO: 2021/11/05 22:11:41 main.go:75: payloadBytes: [123 34 102 105 108 101 110 97 109 101 34 58 34 116 101 115 116 46 116 120 116 34 125]
+INFO: 2021/11/05 22:11:43 main.go:143: -- Get File from server --
