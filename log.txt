@@ -5,3 +5,182 @@ INFO: 2021/11/05 22:11:41 main.go:69: url: http://127.0.0.1:8080/pro/convertToJs
 INFO: 2021/11/05 22:11:41 main.go:70: uploadFile: test.txt
 INFO: 2021/11/05 22:11:41 main.go:75: payloadBytes: [123 34 102 105 108 101 110 97 109 101 34 58 34 116 101 115 116 46 116 120 116 34 125]
 INFO: 2021/11/05 22:11:43 main.go:143: -- Get File from server --
+INFO: 2021/11/06 09:42:08 main.go:125: -- File Upload to server --
+INFO: 2021/11/06 09:42:08 main.go:128: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/06 09:42:08 main.go:69: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/06 09:42:08 main.go:70: uploadFile: test.txt
+INFO: 2021/11/06 09:42:08 main.go:75: payloadBytes: {"filename":"test.txt"}
+INFO: 2021/11/06 09:42:11 main.go:143: -- Get File from server --
+INFO: 2021/11/06 10:43:27 main.go:127: -- File Upload to server --
+INFO: 2021/11/06 10:43:27 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/06 10:43:27 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/06 10:43:27 main.go:71: uploadFile: test.txt
+INFO: 2021/11/06 10:43:27 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/06 10:43:29 main.go:145: -- Get File from server --
+INFO: 2021/11/06 11:29:32 main.go:127: -- File Upload to server --
+INFO: 2021/11/06 11:29:32 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/06 11:29:32 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/06 11:29:32 main.go:71: uploadFile: test.txt
+INFO: 2021/11/06 11:29:32 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/06 11:29:32 main.go:145: -- Get File from server --
+INFO: 2021/11/06 11:30:13 main.go:127: -- File Upload to server --
+INFO: 2021/11/06 11:30:13 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/06 11:30:13 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/06 11:30:13 main.go:71: uploadFile: test.txt
+INFO: 2021/11/06 11:30:13 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/06 11:30:16 main.go:145: -- Get File from server --
+INFO: 2021/11/06 14:24:18 main.go:127: -- File Upload to server --
+INFO: 2021/11/06 14:24:18 main.go:130: commands: [curl -X POST -F file=@default in file localhost:8080/upload]
+INFO: 2021/11/06 14:24:46 main.go:127: -- File Upload to server --
+INFO: 2021/11/06 14:24:46 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/06 14:24:46 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/06 14:24:46 main.go:71: uploadFile: test.txt
+INFO: 2021/11/06 14:24:46 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/06 14:27:33 main.go:127: -- File Upload to server --
+INFO: 2021/11/06 14:27:33 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/06 14:27:33 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/06 14:27:33 main.go:71: uploadFile: test.txt
+INFO: 2021/11/06 14:27:33 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/06 14:30:55 main.go:127: -- File Upload to server --
+INFO: 2021/11/06 14:30:55 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/06 14:30:55 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/06 14:30:55 main.go:71: uploadFile: test.txt
+INFO: 2021/11/06 14:30:55 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/06 14:36:46 main.go:127: -- File Upload to server --
+INFO: 2021/11/06 14:36:46 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/06 14:36:46 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/06 14:36:46 main.go:71: uploadFile: test.txt
+INFO: 2021/11/06 14:36:46 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/06 14:37:31 main.go:127: -- File Upload to server --
+INFO: 2021/11/06 14:37:31 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/06 14:37:31 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/06 14:37:31 main.go:71: uploadFile: test.txt
+INFO: 2021/11/06 14:37:31 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/06 14:42:33 main.go:127: -- File Upload to server --
+INFO: 2021/11/06 14:42:33 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/06 14:42:33 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/06 14:42:33 main.go:71: uploadFile: test.txt
+INFO: 2021/11/06 14:42:33 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/06 14:42:35 main.go:145: -- Get File from server --
+INFO: 2021/11/06 14:47:00 main.go:127: -- File Upload to server --
+INFO: 2021/11/06 14:47:00 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/06 14:47:00 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/06 14:47:00 main.go:71: uploadFile: test.txt
+INFO: 2021/11/06 14:47:00 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/06 14:47:02 main.go:145: -- Get File from server --
+INFO: 2021/11/06 14:54:02 main.go:127: -- File Upload to server --
+INFO: 2021/11/06 14:54:02 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/06 14:54:02 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/06 14:54:02 main.go:71: uploadFile: test.txt
+INFO: 2021/11/06 14:54:02 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/06 14:54:04 main.go:145: -- Get File from server --
+INFO: 2021/11/06 14:56:20 main.go:127: -- File Upload to server --
+INFO: 2021/11/06 14:56:20 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/06 14:56:20 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/06 14:56:20 main.go:71: uploadFile: test.txt
+INFO: 2021/11/06 14:56:20 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/06 14:56:22 main.go:145: -- Get File from server --
+INFO: 2021/11/06 14:56:53 main.go:127: -- File Upload to server --
+INFO: 2021/11/06 14:56:53 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/06 14:56:53 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/06 14:56:53 main.go:71: uploadFile: test.txt
+INFO: 2021/11/06 14:56:53 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/06 14:56:55 main.go:145: -- Get File from server --
+INFO: 2021/11/06 14:59:58 main.go:127: -- File Upload to server --
+INFO: 2021/11/06 14:59:58 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/06 14:59:58 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/06 14:59:58 main.go:71: uploadFile: test.txt
+INFO: 2021/11/06 14:59:58 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/06 15:00:01 main.go:145: -- Get File from server --
+INFO: 2021/11/06 15:04:21 main.go:127: -- File Upload to server --
+INFO: 2021/11/06 15:04:21 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/06 15:04:21 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/06 15:04:21 main.go:71: uploadFile: test.txt
+INFO: 2021/11/06 15:04:21 main.go:76: requestBody: {"filename":"test.txt","parameta":"mike bob"}
+INFO: 2021/11/06 15:04:23 main.go:145: -- Get File from server --
+INFO: 2021/11/06 15:04:47 main.go:127: -- File Upload to server --
+INFO: 2021/11/06 15:04:47 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/06 15:04:47 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/06 15:04:47 main.go:71: uploadFile: test.txt
+INFO: 2021/11/06 15:04:47 main.go:76: requestBody: {"filename":"test.txt","parameta":"mike bob"}
+INFO: 2021/11/06 15:04:49 main.go:145: -- Get File from server --
+INFO: 2021/11/06 15:13:43 main.go:127: -- File Upload to server --
+INFO: 2021/11/06 15:13:43 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/06 15:13:43 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/06 15:13:43 main.go:71: uploadFile: test.txt
+INFO: 2021/11/06 15:13:43 main.go:76: requestBody: {"filename":"test.txt","parameta":"mike bob"}
+INFO: 2021/11/06 15:13:45 main.go:145: -- Get File from server --
+INFO: 2021/11/06 15:23:29 main.go:127: -- File Upload to server --
+INFO: 2021/11/06 15:23:29 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/06 15:23:29 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/06 15:23:29 main.go:71: uploadFile: test.txt
+INFO: 2021/11/06 15:23:29 main.go:76: requestBody: {"filename":"test.txt","parameta":"mike bob"}
+INFO: 2021/11/06 15:23:32 main.go:145: -- Get File from server --
+INFO: 2021/11/08 06:13:24 main.go:127: -- File Upload to server --
+INFO: 2021/11/08 06:13:24 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/08 06:13:24 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/08 06:13:24 main.go:71: uploadFile: test.txt
+INFO: 2021/11/08 06:13:24 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/08 06:13:26 main.go:145: -- Get File from server --
+INFO: 2021/11/08 06:22:57 main.go:127: -- File Upload to server --
+INFO: 2021/11/08 06:22:57 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/08 06:22:57 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/08 06:22:57 main.go:71: uploadFile: test.txt
+INFO: 2021/11/08 06:22:57 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/08 06:22:59 main.go:145: -- Get File from server --
+INFO: 2021/11/08 06:45:02 main.go:127: -- File Upload to server --
+INFO: 2021/11/08 06:45:02 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/08 06:45:02 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/08 06:45:02 main.go:71: uploadFile: test.txt
+INFO: 2021/11/08 06:45:02 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/08 06:45:04 main.go:145: -- Get File from server --
+INFO: 2021/11/08 06:45:22 main.go:127: -- File Upload to server --
+INFO: 2021/11/08 06:45:22 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/08 06:45:22 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/08 06:45:22 main.go:71: uploadFile: test.txt
+INFO: 2021/11/08 06:45:22 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/08 06:45:24 main.go:145: -- Get File from server --
+INFO: 2021/11/08 06:49:51 main.go:127: -- File Upload to server --
+INFO: 2021/11/08 06:49:51 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/08 06:49:51 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/08 06:49:51 main.go:71: uploadFile: test.txt
+INFO: 2021/11/08 06:49:51 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/08 06:49:53 main.go:145: -- Get File from server --
+INFO: 2021/11/09 09:33:32 main.go:127: -- File Upload to server --
+INFO: 2021/11/09 09:33:32 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/09 09:33:32 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/09 09:33:32 main.go:71: uploadFile: test.txt
+INFO: 2021/11/09 09:33:32 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/09 09:33:35 main.go:145: -- Get File from server --
+INFO: 2021/11/09 09:33:54 main.go:127: -- File Upload to server --
+INFO: 2021/11/09 09:33:54 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/09 09:33:54 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/09 09:33:54 main.go:71: uploadFile: test.txt
+INFO: 2021/11/09 09:33:54 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/09 09:33:56 main.go:145: -- Get File from server --
+INFO: 2021/11/09 09:35:42 main.go:127: -- File Upload to server --
+INFO: 2021/11/09 09:35:42 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/09 09:35:42 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/09 09:35:42 main.go:71: uploadFile: test.txt
+INFO: 2021/11/09 09:35:42 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/09 09:35:45 main.go:145: -- Get File from server --
+INFO: 2021/11/09 09:36:14 main.go:127: -- File Upload to server --
+INFO: 2021/11/09 09:36:14 main.go:130: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/09 09:36:14 main.go:70: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/09 09:36:14 main.go:71: uploadFile: test.txt
+INFO: 2021/11/09 09:36:14 main.go:76: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/09 09:36:16 main.go:144: -- Get File from server --
+INFO: 2021/11/09 10:22:30 main.go:134: -- File Upload to server --
+INFO: 2021/11/09 10:22:30 main.go:137: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/09 10:22:30 main.go:74: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/09 10:22:30 main.go:75: uploadFile: test.txt
+INFO: 2021/11/09 10:22:30 main.go:82: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/09 10:22:32 main.go:107: Response body: {"outUrls":["http://127.0.0.1:8080/fileserver/programOut/convertToJson/test.txt.jsona0","http://127.0.0.1:8080/fileserver/programOut/convertToJson/test.txt.jsonb1"]}
+INFO: 2021/11/09 10:22:32 main.go:155: -- Get File from server --
+INFO: 2021/11/09 10:26:56 main.go:134: -- File Upload to server --
+INFO: 2021/11/09 10:26:56 main.go:137: commands: [curl -X POST -F file=@test.txt localhost:8080/upload]
+INFO: 2021/11/09 10:26:56 main.go:74: url: http://127.0.0.1:8080/pro/convertToJson
+INFO: 2021/11/09 10:26:56 main.go:75: uploadFile: test.txt
+INFO: 2021/11/09 10:26:56 main.go:82: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/09 10:26:58 main.go:107: Response body: {"outUrls":["http://127.0.0.1:8080/fileserver/programOut/convertToJson/test.txt.jsona0","http://127.0.0.1:8080/fileserver/programOut/convertToJson/test.txt.jsonb1"]}
+INFO: 2021/11/09 10:26:58 main.go:155: -- Get File from server --
