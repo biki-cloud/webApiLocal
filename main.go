@@ -22,7 +22,6 @@ func GetLogger(filename string) *log.Logger {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	fmt.Println(file)
 
 	// my logger for this program
 	myLogger := log.New(file, "INFO: ", log.Ldate|log.Ltime|log.Lshortfile)
@@ -109,8 +108,6 @@ func processFileOnServer(url string, uploadedFile string, parameta string) ([]st
 		log.Fatal(err)
 	}
 
-	fmt.Printf("%v\n", res.OutPathURLs)
-
 	return res.OutPathURLs, err
 
 }
@@ -154,29 +151,26 @@ func main() {
 	// processFileOnServer関数の引数で出力されたファイルたちを受け取るURLをもらうのでローカルに取得する
 	myLogger.Println("-- Get File from server --")
 	for _, getOutFileUrl := range getOutFileUrls {
-		cmd = exec.Command(`curl`, `-OL`, getOutFileUrl)
-		fmt.Println(cmd.Args)
+		args := []string{"-OL", getOutFileUrl}
+		cmd = exec.Command("curl", args...)
+		myLogger.Printf("get out file command: %v\n", cmd.Args)
+
+		// コマンドを実行するとローカルに一回出力される
 		err = execCommand(cmd)
-
 		if err != nil {
 			log.Fatal(err)
 		}
-		// move output dir
-		fmt.Println("-- Move File --")
+
+		// 引数で指定された出力ディレクトリに移動させる
+		myLogger.Println("-- Move File --")
 		basename := filepath.Base(getOutFileUrl)
-		fmt.Println(basename)
 		newLocation := filepath.Join(outputDir, basename)
-		fmt.Printf("%v -> %v\n", basename, newLocation)
-		err = os.Rename(basename, newLocation)
 
+		myLogger.Printf("move %v -> %v\n", basename, newLocation)
+		err = os.Rename(basename, newLocation)
 		if err != nil {
 			log.Fatal(err)
 		}
-
-		//err = os.Remove(newLocation)
-		//if err != nil {
-		//log.Fatal(err)
-		//}
 	}
 
 }
