@@ -12,10 +12,17 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 )
 
+// NullWriter は何も書かない
+// これをloggerのSetOutputにセットしたらログを吐かない
+type NullWriter int
+func (NullWriter) Write([]byte) (int, error) {return 0, nil}
 
-func GetLogger(filename string) *log.Logger {
+// GetLogger はファイル名を入れてロガーを返す関数
+// loggerFlagがfalseならログは書かない。
+func GetLogger(filename string, loggerFlag bool) *log.Logger {
 	// file open
 	file, err := os.OpenFile(filename, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
 
@@ -26,18 +33,42 @@ func GetLogger(filename string) *log.Logger {
 	// my logger for this program
 	myLogger := log.New(file, "INFO: ", log.Ldate|log.Ltime|log.Lshortfile)
 
-	// 標準出力にも結果を表示するため
-	//myLogger.SetOutput(io.MultiWriter(os.Stdout))
-	mw := io.MultiWriter(os.Stdout, file)
-	myLogger.SetOutput(mw)
+	// 標準出力があるなら表示する
+	// ないなら標準エラー出力を出す
+	if loggerFlag {
+		mw := io.MultiWriter(os.Stdout, file)
+		myLogger.SetOutput(mw)
+	} else {
+		myLogger.SetOutput(new(NullWriter))
+	}
 
 	return myLogger
 }
 
-var (
-	myLogger *log.Logger = GetLogger("./log.txt")
-)
 
+// Exec は実行するためのコマンドをもらい、実行し、stdout, stderr, errを返す
+func Exec(command string) (stdoutStr string, stderrStr string, cmderr error) {
+
+	commands := strings.Split(command, " ")
+
+	cmd := exec.Command(commands[0], commands[1:]...)
+
+	var (
+		stdout bytes.Buffer
+		stderr bytes.Buffer
+	)
+
+	cmd.Stdout = &stdout
+	cmd.Stderr = &stderr
+
+	err := cmd.Run()
+
+	stdoutStr = stdout.String()
+	stderrStr = stderr.String()
+	cmderr = err
+
+	return
+}
 func execCommand(cmd *exec.Cmd) error {
 
 	var (
@@ -50,26 +81,28 @@ func execCommand(cmd *exec.Cmd) error {
 
 	err := cmd.Run()
 
-	fmt.Printf("Stdout: %s\n", stdout.String())
-	fmt.Printf("Stderr: %s\n", stderr.String())
-
 	return err
 
 }
 
+// RequestBody はアップロードされた情報をサーバーに送る際の構造体
 type RequestBody struct {
 	Filename string `json:"filename"`
 	Parameta string `json:"parameta"`
 }
 
-type Res struct {
+//ResponseBody はプロセスがサーバの中で走り、その結果を受け取るための構造体
+type ResponseBody struct {
 	OutPathURLs []string `json:"outURLs"`
+	StdOut string `json:"stdout"`
+	StdErr string `json:"stderr"`
 }
 
 // processFileOnServerはサーバにアップロードしたファイルを処理させる。
 // サーバのurl, アップロードしたuploadedFile、サーバ上でコマンドを実行するためのparametaを受け取る
 // 返り値はサーバー内で出力したファイルを取得するためのURLパスのリストを返す。
-func processFileOnServer(url string, uploadedFile string, parameta string) ([]string, error) {
+func processFileOnServer(url string, uploadedFile string, parameta string, myLogger *log.Logger) (ResponseBody, error) {
+
 	myLogger.Printf("url: %v\n", url)
 	myLogger.Printf("uploadFile: %v\n", uploadedFile)
 
@@ -80,7 +113,7 @@ func processFileOnServer(url string, uploadedFile string, parameta string) ([]st
 	requestBody, err := json.Marshal(reqBody)
 	myLogger.Printf("requestBody: %v\n", string(requestBody))
 	if err != nil {
-		return nil, err
+		return ResponseBody{}, err
 	}
 
 	body := bytes.NewReader(requestBody)
@@ -88,27 +121,27 @@ func processFileOnServer(url string, uploadedFile string, parameta string) ([]st
 	// POSTリクエストを作成
 	req, err := http.NewRequest("POST", url, body)
 	if err != nil {
-		return nil, err
+		return ResponseBody{}, err
 	}
 	req.Header.Set("Content-Type", "application/json")
 
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
-		return nil, err
+		return ResponseBody{}, err
 	}
 
 	defer resp.Body.Close()
 
 	// レスポンスを受け取り、格納する。
-	var res Res
+	var res ResponseBody
 	b, err := ioutil.ReadAll(resp.Body)
 	myLogger.Printf("Response body: %v\r", string(b))
 	if err := json.Unmarshal(b, &res); err != nil {
 		log.Fatal(err)
 	}
 
-	return res.OutPathURLs, err
+	return res, err
 
 }
 
@@ -118,54 +151,60 @@ func main() {
 		inputFile string
 		outputDir string
 		parameta string
+		LogFlag bool
 	)
 	flag.StringVar(&url, "url", "default", "please url")
 	flag.StringVar(&inputFile, "i", "default in file", "please input file")
 	flag.StringVar(&outputDir, "o", "default out dir", "please output dir")
 	flag.StringVar(&parameta, "p", "default parameta", "please parameta")
+	flag.BoolVar(&LogFlag, "l", false, "please log flag")
 
 	flag.Parse()
 
-	// ローカルファイルをサーバーに配置する
+	myLogger := GetLogger("./log.txt", LogFlag)
+
+	// ローカルファイルをサーバーにアップロードする
 	// curl -X POST -F "file=@<ファイル名>" localhost:8080/upload
 	myLogger.Println("-- File Upload to server --")
-	fileStr := "file=@" + inputFile
-	cmd := exec.Command(`curl`, `-X`, `POST`, `-F`, fileStr, "localhost:8080/upload")
-	myLogger.Printf("commands: %v\n", cmd.Args)
-	err := execCommand(cmd)
+	command := "curl -X POST -F file=@" + inputFile + " localhost:8080/upload"
+	stdout, stderr, err := Exec(command)
+	myLogger.Printf("commands: %v\n", command)
+	myLogger.Printf("stdout: %v\n", stdout)
+	myLogger.Printf("stderr: %v\n", stderr)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println()
-
-	// アップロードしたファイルをサーバー上で処理する。
+	// アップロードしたファイル情報を送信しサーバー上で処理する。
+	// サーバでの実行結果を表示する。
 	basename := filepath.Base(inputFile)
-	getOutFileUrls, err := processFileOnServer(url, basename, parameta)
+	res, err := processFileOnServer(url, basename, parameta, myLogger)
+	if res.StdOut == "" {
+		fmt.Println(res.StdErr)
+	} else {
+		fmt.Println(res.StdOut)
+	}
 	if err != nil {
 		myLogger.Fatalln(err)
 	}
 
-	fmt.Println()
 
-	// processFileOnServer関数の引数で出力されたファイルたちを受け取るURLをもらうのでローカルに取得する
+	// processFileOnServer関数で処理されアウトプットされたファイルをcurlコマンドで取得する
 	myLogger.Println("-- Get File from server --")
-	for _, getOutFileUrl := range getOutFileUrls {
-		args := []string{"-OL", getOutFileUrl}
-		cmd = exec.Command("curl", args...)
-		myLogger.Printf("get out file command: %v\n", cmd.Args)
-
-		// コマンドを実行するとローカルに一回出力される
-		err = execCommand(cmd)
+	for _, getOutFileURL := range res.OutPathURLs {
+		command := "curl -OL " + getOutFileURL
+		stdout, stderr, err = Exec(command)
+		myLogger.Printf("commands: %v\n", command)
+		myLogger.Printf("stdout: %v\n", stdout)
+		myLogger.Printf("stderr: %v\n", stderr)
 		if err != nil {
 			log.Fatal(err)
 		}
 
 		// 引数で指定された出力ディレクトリに移動させる
 		myLogger.Println("-- Move File --")
-		basename := filepath.Base(getOutFileUrl)
+		basename := filepath.Base(getOutFileURL)
 		newLocation := filepath.Join(outputDir, basename)
-
 		myLogger.Printf("move %v -> %v\n", basename, newLocation)
 		err = os.Rename(basename, newLocation)
 		if err != nil {
