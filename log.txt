@@ -662,3 +662,906 @@ INFO: 2021/11/13 16:11:13 main.go:197: stderr:   % Total    % Received % Xferd  
 
 INFO: 2021/11/13 16:11:13 main.go:203: -- Move File --
 INFO: 2021/11/13 16:11:13 main.go:206: move test.txt.json.zip1 -> out/test.txt.json.zip1
+INFO: 2021/11/13 19:55:26 main.go:153: -- File Upload to server --
+INFO: 2021/11/13 19:55:26 main.go:156: commands: curl -X POST -F file=@test.txt localhost:8080/upload
+INFO: 2021/11/13 19:55:26 main.go:157: stdout: 
+INFO: 2021/11/13 19:55:26 main.go:158: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+curl: (7) Failed to connect to localhost port 8080: Connection refused
+
+INFO: 2021/11/13 19:55:41 main.go:153: -- File Upload to server --
+INFO: 2021/11/13 19:55:41 main.go:156: commands: curl -X POST -F file=@test.txt localhost:8080/upload
+INFO: 2021/11/13 19:55:41 main.go:157: stdout: 
+INFO: 2021/11/13 19:55:41 main.go:158: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+curl: (7) Failed to connect to localhost port 8080: Connection refused
+
+INFO: 2021/11/13 20:00:55 main.go:155: -- File Upload to server --
+INFO: 2021/11/13 20:00:55 main.go:158: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/13 20:00:55 main.go:159: stdout: Upload successful
+INFO: 2021/11/13 20:00:55 main.go:160: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/13 20:00:55 main.go:91: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/13 20:00:55 main.go:92: uploadFile: test.txt
+INFO: 2021/11/13 20:00:55 main.go:99: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/13 20:00:57 main.go:124: Response body: {"outURLs":["http://localhost:8081/fileserver/programOut/convertToJson/2021-11-13-20-00-55-0X8o6ec3Hf9OesDz2byt/test.txt.json.pcap0","http://localhost:8081/fileserver/programOut/convertToJson/2021-11-13-20-00-55-0X8o6ec3Hf9OesDz2byt/test.txt.json.zip1"],"stdout":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-13-20-00-55-0X8o6ec3Hf9OesDz2byt', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-13-20-00-55-0X8o6ec3Hf9OesDz2byt\nprocess start\nprocess end\nmove start\nmove end\n","stderr":""}
+INFO: 2021/11/13 20:00:57 main.go:181: -- Get File from server --
+INFO: 2021/11/13 20:00:57 main.go:185: commands: curl -OL http://localhost:8081/fileserver/programOut/convertToJson/2021-11-13-20-00-55-0X8o6ec3Hf9OesDz2byt/test.txt.json.pcap0
+INFO: 2021/11/13 20:00:57 main.go:186: stdout: 
+INFO: 2021/11/13 20:00:57 main.go:187: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0   9500      0 --:--:-- --:--:-- --:--:--  9500
+
+INFO: 2021/11/13 20:00:57 main.go:193: -- Move File --
+INFO: 2021/11/13 20:00:57 main.go:196: move test.txt.json.pcap0 -> out/test.txt.json.pcap0
+INFO: 2021/11/13 20:00:57 main.go:185: commands: curl -OL http://localhost:8081/fileserver/programOut/convertToJson/2021-11-13-20-00-55-0X8o6ec3Hf9OesDz2byt/test.txt.json.zip1
+INFO: 2021/11/13 20:00:57 main.go:186: stdout: 
+INFO: 2021/11/13 20:00:57 main.go:187: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/13 20:00:57 main.go:193: -- Move File --
+INFO: 2021/11/13 20:00:57 main.go:196: move test.txt.json.zip1 -> out/test.txt.json.zip1
+INFO: 2021/11/13 20:02:49 main.go:156: -- File Upload to server --
+INFO: 2021/11/13 20:02:49 main.go:159: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/13 20:02:49 main.go:160: stdout: Upload successful
+INFO: 2021/11/13 20:02:49 main.go:161: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205   5666  68333 --:--:-- --:--:-- --:--:-- 74000
+
+INFO: 2021/11/13 20:02:49 main.go:91: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/13 20:02:49 main.go:92: uploadFile: test.txt
+INFO: 2021/11/13 20:02:49 main.go:99: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/13 20:02:51 main.go:124: Response body: {"outURLs":["http://localhost:8081/fileserver/programOut/convertToJson/2021-11-13-20-02-49-fxrzdqI1PCpCKBBlaNbQ/test.txt.json.pcap0","http://localhost:8081/fileserver/programOut/convertToJson/2021-11-13-20-02-49-fxrzdqI1PCpCKBBlaNbQ/test.txt.json.zip1"],"stdout":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-13-20-02-49-fxrzdqI1PCpCKBBlaNbQ', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-13-20-02-49-fxrzdqI1PCpCKBBlaNbQ\nprocess start\nprocess end\nmove start\nmove end\n","stderr":""}
+INFO: 2021/11/13 20:02:51 main.go:182: -- Get File from server --
+INFO: 2021/11/13 20:02:51 main.go:186: commands: curl -OL http://localhost:8081/fileserver/programOut/convertToJson/2021-11-13-20-02-49-fxrzdqI1PCpCKBBlaNbQ/test.txt.json.pcap0
+INFO: 2021/11/13 20:02:51 main.go:187: stdout: 
+INFO: 2021/11/13 20:02:51 main.go:188: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0   9500      0 --:--:-- --:--:-- --:--:--  9500
+
+INFO: 2021/11/13 20:02:51 main.go:194: -- Move File --
+INFO: 2021/11/13 20:02:51 main.go:197: move test.txt.json.pcap0 -> out/test.txt.json.pcap0
+INFO: 2021/11/13 20:02:51 main.go:186: commands: curl -OL http://localhost:8081/fileserver/programOut/convertToJson/2021-11-13-20-02-49-fxrzdqI1PCpCKBBlaNbQ/test.txt.json.zip1
+INFO: 2021/11/13 20:02:51 main.go:187: stdout: 
+INFO: 2021/11/13 20:02:51 main.go:188: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/13 20:02:51 main.go:194: -- Move File --
+INFO: 2021/11/13 20:02:51 main.go:197: move test.txt.json.zip1 -> out/test.txt.json.zip1
+INFO: 2021/11/13 20:03:31 main.go:156: -- File Upload to server --
+INFO: 2021/11/13 20:03:31 main.go:159: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/13 20:03:31 main.go:160: stdout: Upload successful
+INFO: 2021/11/13 20:03:31 main.go:161: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/13 20:03:31 main.go:91: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/13 20:03:31 main.go:92: uploadFile: test.txt
+INFO: 2021/11/13 20:03:31 main.go:99: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/13 20:03:33 main.go:124: Response body: {"outURLs":["http://localhost:8081/fileserver/programOut/convertToJson/2021-11-13-20-03-31-yJsJwYKV2iymBhrN7lYr/test.txt.json.pcap0","http://localhost:8081/fileserver/programOut/convertToJson/2021-11-13-20-03-31-yJsJwYKV2iymBhrN7lYr/test.txt.json.zip1"],"stdout":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-13-20-03-31-yJsJwYKV2iymBhrN7lYr', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-13-20-03-31-yJsJwYKV2iymBhrN7lYr\nprocess start\nprocess end\nmove start\nmove end\n","stderr":""}
+INFO: 2021/11/13 20:03:33 main.go:183: -- Get File from server --
+INFO: 2021/11/13 20:03:33 main.go:186: commands: curl -OL http://localhost:8081/fileserver/programOut/convertToJson/2021-11-13-20-03-31-yJsJwYKV2iymBhrN7lYr/test.txt.json.pcap0
+INFO: 2021/11/13 20:03:33 main.go:187: stdout: 
+INFO: 2021/11/13 20:03:33 main.go:188: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0   9500      0 --:--:-- --:--:-- --:--:--  9500
+
+INFO: 2021/11/13 20:03:33 main.go:194: -- Move File --
+INFO: 2021/11/13 20:03:33 main.go:197: move test.txt.json.pcap0 -> out/test.txt.json.pcap0
+INFO: 2021/11/13 20:03:33 main.go:183: -- Get File from server --
+INFO: 2021/11/13 20:03:33 main.go:186: commands: curl -OL http://localhost:8081/fileserver/programOut/convertToJson/2021-11-13-20-03-31-yJsJwYKV2iymBhrN7lYr/test.txt.json.zip1
+INFO: 2021/11/13 20:03:33 main.go:187: stdout: 
+INFO: 2021/11/13 20:03:33 main.go:188: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/13 20:03:33 main.go:194: -- Move File --
+INFO: 2021/11/13 20:03:33 main.go:197: move test.txt.json.zip1 -> out/test.txt.json.zip1
+INFO: 2021/11/13 20:06:21 main.go:156: -- File Upload to server --
+INFO: 2021/11/13 20:06:21 main.go:159: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/13 20:06:21 main.go:160: stdout: Upload successful
+INFO: 2021/11/13 20:06:21 main.go:161: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/13 20:06:21 main.go:91: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/13 20:06:21 main.go:92: uploadFile: test.txt
+INFO: 2021/11/13 20:06:21 main.go:99: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/13 20:06:23 main.go:124: Response body: exit status 1
+
+INFO: 2021/11/13 20:09:02 main.go:156: -- File Upload to server --
+INFO: 2021/11/13 20:09:02 main.go:159: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/13 20:09:02 main.go:160: stdout: Upload successful
+INFO: 2021/11/13 20:09:02 main.go:161: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/13 20:09:02 main.go:91: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/13 20:09:02 main.go:92: uploadFile: test.txt
+INFO: 2021/11/13 20:09:02 main.go:99: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/13 20:09:04 main.go:124: Response body: exit status 1
+
+INFO: 2021/11/13 20:17:48 main.go:156: -- File Upload to server --
+INFO: 2021/11/13 20:17:48 main.go:159: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/13 20:17:48 main.go:160: stdout: Upload successful
+INFO: 2021/11/13 20:17:48 main.go:161: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/13 20:17:48 main.go:91: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/13 20:17:48 main.go:92: uploadFile: test.txt
+INFO: 2021/11/13 20:17:48 main.go:99: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/13 20:17:50 main.go:124: Response body: exit status 1
+
+INFO: 2021/11/13 20:22:32 main.go:156: -- File Upload to server --
+INFO: 2021/11/13 20:22:32 main.go:159: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/13 20:22:32 main.go:160: stdout: Upload successful
+INFO: 2021/11/13 20:22:32 main.go:161: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/13 20:22:32 main.go:91: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/13 20:22:32 main.go:92: uploadFile: test.txt
+INFO: 2021/11/13 20:22:32 main.go:99: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/13 20:22:35 main.go:124: Response body: exit status 1
+
+INFO: 2021/11/13 22:02:40 main.go:157: -- File Upload to server --
+INFO: 2021/11/13 22:02:40 main.go:160: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/13 22:02:40 main.go:161: stdout: Upload successful
+INFO: 2021/11/13 22:02:40 main.go:162: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/13 22:02:40 main.go:91: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/13 22:02:40 main.go:92: uploadFile: test.txt
+INFO: 2021/11/13 22:02:40 main.go:99: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/13 22:02:42 main.go:125: Response body: exit status 1
+
+INFO: 2021/11/13 22:03:21 main.go:158: -- File Upload to server --
+INFO: 2021/11/13 22:03:21 main.go:161: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/13 22:03:21 main.go:162: stdout: Upload successful
+INFO: 2021/11/13 22:03:21 main.go:163: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/13 22:03:21 main.go:91: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/13 22:03:21 main.go:92: uploadFile: test.txt
+INFO: 2021/11/13 22:03:21 main.go:99: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/13 22:03:23 main.go:126: Response body: exit status 1
+
+INFO: 2021/11/13 22:04:04 main.go:159: -- File Upload to server --
+INFO: 2021/11/13 22:04:04 main.go:162: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/13 22:04:04 main.go:163: stdout: Upload successful
+INFO: 2021/11/13 22:04:04 main.go:164: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/13 22:04:04 main.go:91: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/13 22:04:04 main.go:92: uploadFile: test.txt
+INFO: 2021/11/13 22:04:04 main.go:99: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/13 22:04:06 main.go:127: Response body: exit status 1
+
+INFO: 2021/11/13 22:06:16 main.go:159: -- File Upload to server --
+INFO: 2021/11/13 22:06:16 main.go:162: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/13 22:06:16 main.go:163: stdout: Upload successful
+INFO: 2021/11/13 22:06:16 main.go:164: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/13 22:06:16 main.go:91: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/13 22:06:16 main.go:92: uploadFile: test.txt
+INFO: 2021/11/13 22:06:16 main.go:99: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/13 22:06:18 main.go:127: Response body: exit status 1
+
+INFO: 2021/11/13 22:07:11 main.go:159: -- File Upload to server --
+INFO: 2021/11/13 22:07:11 main.go:162: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/13 22:07:11 main.go:163: stdout: Upload successful
+INFO: 2021/11/13 22:07:11 main.go:164: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/13 22:07:11 main.go:91: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/13 22:07:11 main.go:92: uploadFile: test.txt
+INFO: 2021/11/13 22:07:11 main.go:99: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/13 22:07:13 main.go:127: Response body: {"status":"fail"}
+INFO: 2021/11/13 22:30:31 main.go:159: -- File Upload to server --
+INFO: 2021/11/13 22:30:31 main.go:162: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/13 22:30:31 main.go:163: stdout: Upload successful
+INFO: 2021/11/13 22:30:31 main.go:164: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/13 22:30:31 main.go:91: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/13 22:30:31 main.go:92: uploadFile: test.txt
+INFO: 2021/11/13 22:30:31 main.go:99: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/13 22:30:33 main.go:127: Response body: {"stdout":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-13-22-30-31-uqyrn17MVYXSFn6tBHDM', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-13-22-30-31-uqyrn17MVYXSFn6tBHDM\nprocess start\nprocess end\n","stderr":"Traceback (most recent call last):\n  File \"/Users/hibiki/go/src/user/webApp/api/programs/convertToJson/convert_json.py\", line 16, in \u003cmodule\u003e\n    raise BaseException(\"python is error\")\nBaseException: python is error\n","outURLs":null}
+INFO: 2021/11/13 22:33:50 main.go:156: -- File Upload to server --
+INFO: 2021/11/13 22:33:50 main.go:159: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/13 22:33:50 main.go:160: stdout: Upload successful
+INFO: 2021/11/13 22:33:50 main.go:161: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/13 22:33:50 main.go:91: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/13 22:33:50 main.go:92: uploadFile: test.txt
+INFO: 2021/11/13 22:33:50 main.go:99: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/13 22:33:52 main.go:124: Response body: {"stdout":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-13-22-33-50-dYSz4T7cWFEAwC9iiqXI', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-13-22-33-50-dYSz4T7cWFEAwC9iiqXI\nprocess start\nprocess end\n","stderr":"Traceback (most recent call last):\n  File \"/Users/hibiki/go/src/user/webApp/api/programs/convertToJson/convert_json.py\", line 16, in \u003cmodule\u003e\n    raise BaseException(\"python is error\")\nBaseException: python is error\n","outURLs":null}
+INFO: 2021/11/14 08:33:25 main.go:157: -- File Upload to server --
+INFO: 2021/11/14 08:33:25 main.go:160: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/14 08:33:25 main.go:161: stdout: Upload successful
+INFO: 2021/11/14 08:33:25 main.go:162: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/14 08:33:25 main.go:92: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/14 08:33:25 main.go:93: uploadFile: test.txt
+INFO: 2021/11/14 08:33:25 main.go:100: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/14 08:33:27 main.go:125: Response body: {"outURLs":null,"stdout":"","stderr":"","cmdStartSuccess":false,"cmdEndSuccess":false}
+INFO: 2021/11/14 08:36:39 main.go:159: -- File Upload to server --
+INFO: 2021/11/14 08:36:39 main.go:162: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/14 08:36:39 main.go:163: stdout: Upload successful
+INFO: 2021/11/14 08:36:39 main.go:164: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/14 08:36:39 main.go:93: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/14 08:36:39 main.go:94: uploadFile: test.txt
+INFO: 2021/11/14 08:36:39 main.go:101: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/14 08:36:41 main.go:126: Response body: {"outURLs":null,"stdout":"","stderr":"","cmdStartSuccess":false,"cmdEndSuccess":false}
+INFO: 2021/11/14 08:36:41 main.go:130: res: {[]   false false}
+INFO: 2021/11/14 09:57:49 main.go:159: -- File Upload to server --
+INFO: 2021/11/14 09:57:49 main.go:162: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/14 09:57:49 main.go:163: stdout: Upload successful
+INFO: 2021/11/14 09:57:49 main.go:164: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/14 09:57:49 main.go:93: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/14 09:57:49 main.go:94: uploadFile: test.txt
+INFO: 2021/11/14 09:57:49 main.go:101: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/14 09:57:51 main.go:126: Response body: {"outURLs":null,"cmdStatus":{"std":{"out":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-14-09-57-49-EAx4VgH0v1oaFRNloWA0', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-14-09-57-49-EAx4VgH0v1oaFRNloWA0\nprocess start\nprocess end\n","err":"Traceback (most recent call last):\n  File \"/Users/hibiki/go/src/user/webApp/api/programs/convertToJson/convert_json.py\", line 16, in \u003cmodule\u003e\n    raise BaseException(\"python is error\")\nBaseException: python is error\n"},"startOK":true,"endOK":false}}
+INFO: 2021/11/14 09:57:51 main.go:130: res: {[]   false false}
+INFO: 2021/11/14 10:01:01 main.go:178: -- File Upload to server --
+INFO: 2021/11/14 10:01:01 main.go:181: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/14 10:01:01 main.go:182: stdout: Upload successful
+INFO: 2021/11/14 10:01:01 main.go:183: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/14 10:01:01 main.go:112: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/14 10:01:01 main.go:113: uploadFile: test.txt
+INFO: 2021/11/14 10:01:01 main.go:120: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/14 10:01:03 main.go:145: Response body: {"outURLs":null,"cmdStatus":{"std":{"out":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-14-10-01-01-qDtRbIBeh3UxKBPhZPz2', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-14-10-01-01-qDtRbIBeh3UxKBPhZPz2\nprocess start\nprocess end\n","err":"Traceback (most recent call last):\n  File \"/Users/hibiki/go/src/user/webApp/api/programs/convertToJson/convert_json.py\", line 16, in \u003cmodule\u003e\n    raise BaseException(\"python is error\")\nBaseException: python is error\n"},"startOK":true,"endOK":false}}
+INFO: 2021/11/14 10:01:03 main.go:149: res: {[] {{['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-14-10-01-01-qDtRbIBeh3UxKBPhZPz2', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']
+fileserver/upload/test.txt
+fileserver/programOut/convertToJson/2021-11-14-10-01-01-qDtRbIBeh3UxKBPhZPz2
+process start
+process end
+ Traceback (most recent call last):
+  File "/Users/hibiki/go/src/user/webApp/api/programs/convertToJson/convert_json.py", line 16, in <module>
+    raise BaseException("python is error")
+BaseException: python is error
+} true false}}
+INFO: 2021/11/14 10:14:42 main.go:178: -- File Upload to server --
+INFO: 2021/11/14 10:14:42 main.go:181: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/14 10:14:42 main.go:182: stdout: Upload successful
+INFO: 2021/11/14 10:14:42 main.go:183: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/14 10:14:42 main.go:112: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/14 10:14:42 main.go:113: uploadFile: test.txt
+INFO: 2021/11/14 10:14:42 main.go:120: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/14 10:14:44 main.go:145: Response body: {"outURLs":null,"cmdStatus":{"std":{"out":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-14-10-14-42-XB1zKWaCVtFjW1RjqPiW', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-14-10-14-42-XB1zKWaCVtFjW1RjqPiW\nprocess start\nprocess end\n","err":"Traceback (most recent call last):\n  File \"/Users/hibiki/go/src/user/webApp/api/programs/convertToJson/convert_json.py\", line 16, in \u003cmodule\u003e\n    raise BaseException(\"python is error\")\nBaseException: python is error\n"},"startOK":true,"endOK":false}}
+INFO: 2021/11/14 10:14:44 main.go:149: res: {[] {{['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-14-10-14-42-XB1zKWaCVtFjW1RjqPiW', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']
+fileserver/upload/test.txt
+fileserver/programOut/convertToJson/2021-11-14-10-14-42-XB1zKWaCVtFjW1RjqPiW
+process start
+process end
+ Traceback (most recent call last):
+  File "/Users/hibiki/go/src/user/webApp/api/programs/convertToJson/convert_json.py", line 16, in <module>
+    raise BaseException("python is error")
+BaseException: python is error
+} true false}}
+INFO: 2021/11/14 10:15:55 main.go:178: -- File Upload to server --
+INFO: 2021/11/14 10:15:55 main.go:181: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/14 10:15:55 main.go:182: stdout: Upload successful
+INFO: 2021/11/14 10:15:55 main.go:183: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/14 10:15:55 main.go:112: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/14 10:15:55 main.go:113: uploadFile: test.txt
+INFO: 2021/11/14 10:15:55 main.go:120: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/14 10:15:57 main.go:145: Response body: {"outURLs":["http://localhost:8081/fileserver/programOut/convertToJson/2021-11-14-10-15-55-Iv6aZdrPggoJgjY4P18v/test.txt.json.pcap0","http://localhost:8081/fileserver/programOut/convertToJson/2021-11-14-10-15-55-Iv6aZdrPggoJgjY4P18v/test.txt.json.zip1"],"cmdStatus":{"std":{"out":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-14-10-15-55-Iv6aZdrPggoJgjY4P18v', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-14-10-15-55-Iv6aZdrPggoJgjY4P18v\nprocess start\nprocess end\nmove start\nmove end\n","err":""},"startOK":true,"endOK":true}}
+INFO: 2021/11/14 10:15:57 main.go:149: res: {[http://localhost:8081/fileserver/programOut/convertToJson/2021-11-14-10-15-55-Iv6aZdrPggoJgjY4P18v/test.txt.json.pcap0 http://localhost:8081/fileserver/programOut/convertToJson/2021-11-14-10-15-55-Iv6aZdrPggoJgjY4P18v/test.txt.json.zip1] {{['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-14-10-15-55-Iv6aZdrPggoJgjY4P18v', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']
+fileserver/upload/test.txt
+fileserver/programOut/convertToJson/2021-11-14-10-15-55-Iv6aZdrPggoJgjY4P18v
+process start
+process end
+move start
+move end
+ } true true}}
+INFO: 2021/11/14 10:15:57 main.go:206: -- Get File from server --
+INFO: 2021/11/14 10:15:57 main.go:209: commands: curl -OL http://localhost:8081/fileserver/programOut/convertToJson/2021-11-14-10-15-55-Iv6aZdrPggoJgjY4P18v/test.txt.json.pcap0
+INFO: 2021/11/14 10:15:57 main.go:210: stdout: 
+INFO: 2021/11/14 10:15:57 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0   9500      0 --:--:-- --:--:-- --:--:--  9500
+
+INFO: 2021/11/14 10:15:57 main.go:217: -- Move File --
+INFO: 2021/11/14 10:15:57 main.go:220: move test.txt.json.pcap0 -> out/test.txt.json.pcap0
+INFO: 2021/11/14 10:15:57 main.go:206: -- Get File from server --
+INFO: 2021/11/14 10:15:57 main.go:209: commands: curl -OL http://localhost:8081/fileserver/programOut/convertToJson/2021-11-14-10-15-55-Iv6aZdrPggoJgjY4P18v/test.txt.json.zip1
+INFO: 2021/11/14 10:15:57 main.go:210: stdout: 
+INFO: 2021/11/14 10:15:57 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/14 10:15:57 main.go:217: -- Move File --
+INFO: 2021/11/14 10:15:57 main.go:220: move test.txt.json.zip1 -> out/test.txt.json.zip1
+INFO: 2021/11/14 22:02:03 main.go:178: -- File Upload to server --
+INFO: 2021/11/14 22:02:03 main.go:181: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/14 22:02:03 main.go:182: stdout: Upload successful
+INFO: 2021/11/14 22:02:03 main.go:183: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/14 22:02:03 main.go:112: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/14 22:02:03 main.go:113: uploadFile: test.txt
+INFO: 2021/11/14 22:02:03 main.go:120: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/14 22:02:05 main.go:145: Response body: {"outURLs":["http://localhost:8081/fileserver/programOut/convertToJson/2021-11-14-22-02-03-xjQh5QArP8rKReyhn5w2/test.txt.json.pcap0","http://localhost:8081/fileserver/programOut/convertToJson/2021-11-14-22-02-03-xjQh5QArP8rKReyhn5w2/test.txt.json.zip1"],"cmdStatus":{"std":{"out":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-14-22-02-03-xjQh5QArP8rKReyhn5w2', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-14-22-02-03-xjQh5QArP8rKReyhn5w2\nprocess start\nprocess end\nmove start\nmove end\n","err":""},"startOK":true,"endOK":true}}
+INFO: 2021/11/14 22:02:05 main.go:149: res: {[http://localhost:8081/fileserver/programOut/convertToJson/2021-11-14-22-02-03-xjQh5QArP8rKReyhn5w2/test.txt.json.pcap0 http://localhost:8081/fileserver/programOut/convertToJson/2021-11-14-22-02-03-xjQh5QArP8rKReyhn5w2/test.txt.json.zip1] {{['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-14-22-02-03-xjQh5QArP8rKReyhn5w2', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']
+fileserver/upload/test.txt
+fileserver/programOut/convertToJson/2021-11-14-22-02-03-xjQh5QArP8rKReyhn5w2
+process start
+process end
+move start
+move end
+ } true true}}
+INFO: 2021/11/14 22:02:05 main.go:206: -- Get File from server --
+INFO: 2021/11/14 22:02:05 main.go:209: commands: curl -OL http://localhost:8081/fileserver/programOut/convertToJson/2021-11-14-22-02-03-xjQh5QArP8rKReyhn5w2/test.txt.json.pcap0
+INFO: 2021/11/14 22:02:05 main.go:210: stdout: 
+INFO: 2021/11/14 22:02:05 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0   9500      0 --:--:-- --:--:-- --:--:--  9500
+
+INFO: 2021/11/14 22:02:05 main.go:217: -- Move File --
+INFO: 2021/11/14 22:02:05 main.go:220: move test.txt.json.pcap0 -> out/test.txt.json.pcap0
+INFO: 2021/11/14 22:02:05 main.go:206: -- Get File from server --
+INFO: 2021/11/14 22:02:05 main.go:209: commands: curl -OL http://localhost:8081/fileserver/programOut/convertToJson/2021-11-14-22-02-03-xjQh5QArP8rKReyhn5w2/test.txt.json.zip1
+INFO: 2021/11/14 22:02:05 main.go:210: stdout: 
+INFO: 2021/11/14 22:02:05 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/14 22:02:05 main.go:217: -- Move File --
+INFO: 2021/11/14 22:02:05 main.go:220: move test.txt.json.zip1 -> out/test.txt.json.zip1
+INFO: 2021/11/14 22:07:29 main.go:178: -- File Upload to server --
+INFO: 2021/11/14 22:07:29 main.go:181: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8081/upload
+INFO: 2021/11/14 22:07:29 main.go:182: stdout: Upload successful
+INFO: 2021/11/14 22:07:29 main.go:183: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/14 22:07:29 main.go:112: url: http://127.0.0.1:8081/pro/convertToJson
+INFO: 2021/11/14 22:07:29 main.go:113: uploadFile: test.txt
+INFO: 2021/11/14 22:07:29 main.go:120: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/14 22:07:31 main.go:145: Response body: {"outURLs":["http://localhost:8081/fileserver/programOut/convertToJson/2021-11-14-22-07-29-EjMqqXMEMNyXFg3P2rmS/test.txt.json.pcap0","http://localhost:8081/fileserver/programOut/convertToJson/2021-11-14-22-07-29-EjMqqXMEMNyXFg3P2rmS/test.txt.json.zip1"],"cmdStatus":{"std":{"out":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-14-22-07-29-EjMqqXMEMNyXFg3P2rmS', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-14-22-07-29-EjMqqXMEMNyXFg3P2rmS\nprocess start\nprocess end\nmove start\nmove end\n","err":""},"startOK":true,"endOK":true}}
+INFO: 2021/11/14 22:07:31 main.go:149: res: {[http://localhost:8081/fileserver/programOut/convertToJson/2021-11-14-22-07-29-EjMqqXMEMNyXFg3P2rmS/test.txt.json.pcap0 http://localhost:8081/fileserver/programOut/convertToJson/2021-11-14-22-07-29-EjMqqXMEMNyXFg3P2rmS/test.txt.json.zip1] {{['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-14-22-07-29-EjMqqXMEMNyXFg3P2rmS', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']
+fileserver/upload/test.txt
+fileserver/programOut/convertToJson/2021-11-14-22-07-29-EjMqqXMEMNyXFg3P2rmS
+process start
+process end
+move start
+move end
+ } true true}}
+INFO: 2021/11/14 22:07:31 main.go:206: -- Get File from server --
+INFO: 2021/11/14 22:07:31 main.go:209: commands: curl -OL http://localhost:8081/fileserver/programOut/convertToJson/2021-11-14-22-07-29-EjMqqXMEMNyXFg3P2rmS/test.txt.json.pcap0
+INFO: 2021/11/14 22:07:31 main.go:210: stdout: 
+INFO: 2021/11/14 22:07:31 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/14 22:07:31 main.go:217: -- Move File --
+INFO: 2021/11/14 22:07:31 main.go:220: move test.txt.json.pcap0 -> out/test.txt.json.pcap0
+INFO: 2021/11/14 22:07:31 main.go:206: -- Get File from server --
+INFO: 2021/11/14 22:07:31 main.go:209: commands: curl -OL http://localhost:8081/fileserver/programOut/convertToJson/2021-11-14-22-07-29-EjMqqXMEMNyXFg3P2rmS/test.txt.json.zip1
+INFO: 2021/11/14 22:07:31 main.go:210: stdout: 
+INFO: 2021/11/14 22:07:31 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/14 22:07:31 main.go:217: -- Move File --
+INFO: 2021/11/14 22:07:31 main.go:220: move test.txt.json.zip1 -> out/test.txt.json.zip1
+INFO: 2021/11/14 22:07:59 main.go:178: -- File Upload to server --
+INFO: 2021/11/14 22:07:59 main.go:181: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8082/upload
+INFO: 2021/11/14 22:07:59 main.go:182: stdout: Upload successful
+INFO: 2021/11/14 22:07:59 main.go:183: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/14 22:07:59 main.go:112: url: http://127.0.0.1:8082/pro/convertToJson
+INFO: 2021/11/14 22:07:59 main.go:113: uploadFile: test.txt
+INFO: 2021/11/14 22:07:59 main.go:120: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/14 22:08:01 main.go:145: Response body: {"outURLs":["http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-07-59-H3Tm24qRcxknJBdg8dWu/test.txt.json.pcap0","http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-07-59-H3Tm24qRcxknJBdg8dWu/test.txt.json.zip1"],"cmdStatus":{"std":{"out":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-14-22-07-59-H3Tm24qRcxknJBdg8dWu', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-14-22-07-59-H3Tm24qRcxknJBdg8dWu\nprocess start\nprocess end\nmove start\nmove end\n","err":""},"startOK":true,"endOK":true}}
+INFO: 2021/11/14 22:08:01 main.go:149: res: {[http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-07-59-H3Tm24qRcxknJBdg8dWu/test.txt.json.pcap0 http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-07-59-H3Tm24qRcxknJBdg8dWu/test.txt.json.zip1] {{['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-14-22-07-59-H3Tm24qRcxknJBdg8dWu', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']
+fileserver/upload/test.txt
+fileserver/programOut/convertToJson/2021-11-14-22-07-59-H3Tm24qRcxknJBdg8dWu
+process start
+process end
+move start
+move end
+ } true true}}
+INFO: 2021/11/14 22:08:01 main.go:206: -- Get File from server --
+INFO: 2021/11/14 22:08:01 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-07-59-H3Tm24qRcxknJBdg8dWu/test.txt.json.pcap0
+INFO: 2021/11/14 22:08:01 main.go:210: stdout: 
+INFO: 2021/11/14 22:08:01 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0   9500      0 --:--:-- --:--:-- --:--:--  9500
+
+INFO: 2021/11/14 22:08:01 main.go:217: -- Move File --
+INFO: 2021/11/14 22:08:01 main.go:220: move test.txt.json.pcap0 -> out/test.txt.json.pcap0
+INFO: 2021/11/14 22:08:01 main.go:206: -- Get File from server --
+INFO: 2021/11/14 22:08:01 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-07-59-H3Tm24qRcxknJBdg8dWu/test.txt.json.zip1
+INFO: 2021/11/14 22:08:01 main.go:210: stdout: 
+INFO: 2021/11/14 22:08:01 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/14 22:08:01 main.go:217: -- Move File --
+INFO: 2021/11/14 22:08:01 main.go:220: move test.txt.json.zip1 -> out/test.txt.json.zip1
+INFO: 2021/11/14 22:20:20 main.go:178: -- File Upload to server --
+INFO: 2021/11/14 22:20:20 main.go:181: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8082/upload
+INFO: 2021/11/14 22:20:20 main.go:182: stdout: Upload successful
+INFO: 2021/11/14 22:20:20 main.go:183: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/14 22:20:20 main.go:112: url: http://127.0.0.1:8082/pro/convertToJson
+INFO: 2021/11/14 22:20:20 main.go:113: uploadFile: test.txt
+INFO: 2021/11/14 22:20:20 main.go:120: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/14 22:20:22 main.go:145: Response body: {"outURLs":["http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-20-20-EpaEFkgCpjJuGvxES4Xb/test.txt.json.pcap0","http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-20-20-EpaEFkgCpjJuGvxES4Xb/test.txt.json.zip1"],"cmdStatus":{"std":{"out":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-14-22-20-20-EpaEFkgCpjJuGvxES4Xb', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-14-22-20-20-EpaEFkgCpjJuGvxES4Xb\nprocess start\nprocess end\nmove start\nmove end\n","err":""},"startOK":true,"endOK":true}}
+INFO: 2021/11/14 22:20:22 main.go:149: res: {[http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-20-20-EpaEFkgCpjJuGvxES4Xb/test.txt.json.pcap0 http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-20-20-EpaEFkgCpjJuGvxES4Xb/test.txt.json.zip1] {{['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-14-22-20-20-EpaEFkgCpjJuGvxES4Xb', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']
+fileserver/upload/test.txt
+fileserver/programOut/convertToJson/2021-11-14-22-20-20-EpaEFkgCpjJuGvxES4Xb
+process start
+process end
+move start
+move end
+ } true true}}
+INFO: 2021/11/14 22:20:22 main.go:206: -- Get File from server --
+INFO: 2021/11/14 22:20:22 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-20-20-EpaEFkgCpjJuGvxES4Xb/test.txt.json.pcap0
+INFO: 2021/11/14 22:20:22 main.go:210: stdout: 
+INFO: 2021/11/14 22:20:22 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0   9500      0 --:--:-- --:--:-- --:--:--  9500
+
+INFO: 2021/11/14 22:20:22 main.go:217: -- Move File --
+INFO: 2021/11/14 22:20:22 main.go:220: move test.txt.json.pcap0 -> out/test.txt.json.pcap0
+INFO: 2021/11/14 22:20:22 main.go:206: -- Get File from server --
+INFO: 2021/11/14 22:20:22 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-20-20-EpaEFkgCpjJuGvxES4Xb/test.txt.json.zip1
+INFO: 2021/11/14 22:20:22 main.go:210: stdout: 
+INFO: 2021/11/14 22:20:22 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/14 22:20:22 main.go:217: -- Move File --
+INFO: 2021/11/14 22:20:22 main.go:220: move test.txt.json.zip1 -> out/test.txt.json.zip1
+INFO: 2021/11/14 22:47:39 main.go:178: -- File Upload to server --
+INFO: 2021/11/14 22:47:39 main.go:181: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8082/upload
+INFO: 2021/11/14 22:47:39 main.go:182: stdout: Upload successful
+INFO: 2021/11/14 22:47:39 main.go:183: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/14 22:47:39 main.go:112: url: http://127.0.0.1:8082/pro/convertToJson
+INFO: 2021/11/14 22:47:39 main.go:113: uploadFile: test.txt
+INFO: 2021/11/14 22:47:39 main.go:120: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/14 22:47:41 main.go:145: Response body: {"outURLs":["http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-47-39-FQg0XB5UDApYLSscCEdf/test.txt.json.pcap0","http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-47-39-FQg0XB5UDApYLSscCEdf/test.txt.json.zip1"],"cmdStatus":{"std":{"out":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-14-22-47-39-FQg0XB5UDApYLSscCEdf', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-14-22-47-39-FQg0XB5UDApYLSscCEdf\nprocess start\nprocess end\nmove start\nmove end\n","err":""},"startOK":true,"endOK":true}}
+INFO: 2021/11/14 22:47:41 main.go:149: res: {[http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-47-39-FQg0XB5UDApYLSscCEdf/test.txt.json.pcap0 http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-47-39-FQg0XB5UDApYLSscCEdf/test.txt.json.zip1] {{['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-14-22-47-39-FQg0XB5UDApYLSscCEdf', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']
+fileserver/upload/test.txt
+fileserver/programOut/convertToJson/2021-11-14-22-47-39-FQg0XB5UDApYLSscCEdf
+process start
+process end
+move start
+move end
+ } true true}}
+INFO: 2021/11/14 22:47:41 main.go:206: -- Get File from server --
+INFO: 2021/11/14 22:47:41 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-47-39-FQg0XB5UDApYLSscCEdf/test.txt.json.pcap0
+INFO: 2021/11/14 22:47:41 main.go:210: stdout: 
+INFO: 2021/11/14 22:47:41 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/14 22:47:41 main.go:217: -- Move File --
+INFO: 2021/11/14 22:47:41 main.go:220: move test.txt.json.pcap0 -> out/test.txt.json.pcap0
+INFO: 2021/11/14 22:47:41 main.go:206: -- Get File from server --
+INFO: 2021/11/14 22:47:41 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-47-39-FQg0XB5UDApYLSscCEdf/test.txt.json.zip1
+INFO: 2021/11/14 22:47:41 main.go:210: stdout: 
+INFO: 2021/11/14 22:47:41 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/14 22:47:41 main.go:217: -- Move File --
+INFO: 2021/11/14 22:47:41 main.go:220: move test.txt.json.zip1 -> out/test.txt.json.zip1
+INFO: 2021/11/14 22:58:17 main.go:178: -- File Upload to server --
+INFO: 2021/11/14 22:58:17 main.go:181: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8082/upload
+INFO: 2021/11/14 22:58:17 main.go:182: stdout: Upload successful
+INFO: 2021/11/14 22:58:17 main.go:183: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/14 22:58:17 main.go:112: url: http://127.0.0.1:8082/pro/convertToJson
+INFO: 2021/11/14 22:58:17 main.go:113: uploadFile: test.txt
+INFO: 2021/11/14 22:58:17 main.go:120: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/14 22:58:19 main.go:145: Response body: {"outURLs":["http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-58-17-FiSN9Cn328nzP9uFKRbh/test.txt.json.pcap0","http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-58-17-FiSN9Cn328nzP9uFKRbh/test.txt.json.zip1"],"cmdStatus":{"std":{"out":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-14-22-58-17-FiSN9Cn328nzP9uFKRbh', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-14-22-58-17-FiSN9Cn328nzP9uFKRbh\nprocess start\nprocess end\nmove start\nmove end\n","err":""},"startOK":true,"endOK":true}}
+INFO: 2021/11/14 22:58:19 main.go:149: res: {[http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-58-17-FiSN9Cn328nzP9uFKRbh/test.txt.json.pcap0 http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-58-17-FiSN9Cn328nzP9uFKRbh/test.txt.json.zip1] {{['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-14-22-58-17-FiSN9Cn328nzP9uFKRbh', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']
+fileserver/upload/test.txt
+fileserver/programOut/convertToJson/2021-11-14-22-58-17-FiSN9Cn328nzP9uFKRbh
+process start
+process end
+move start
+move end
+ } true true}}
+INFO: 2021/11/14 22:58:19 main.go:206: -- Get File from server --
+INFO: 2021/11/14 22:58:19 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-58-17-FiSN9Cn328nzP9uFKRbh/test.txt.json.pcap0
+INFO: 2021/11/14 22:58:19 main.go:210: stdout: 
+INFO: 2021/11/14 22:58:19 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0   9500      0 --:--:-- --:--:-- --:--:--  9500
+
+INFO: 2021/11/14 22:58:19 main.go:217: -- Move File --
+INFO: 2021/11/14 22:58:19 main.go:220: move test.txt.json.pcap0 -> out/test.txt.json.pcap0
+INFO: 2021/11/14 22:58:19 main.go:206: -- Get File from server --
+INFO: 2021/11/14 22:58:19 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-14-22-58-17-FiSN9Cn328nzP9uFKRbh/test.txt.json.zip1
+INFO: 2021/11/14 22:58:19 main.go:210: stdout: 
+INFO: 2021/11/14 22:58:19 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0   9500      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/14 22:58:19 main.go:217: -- Move File --
+INFO: 2021/11/14 22:58:19 main.go:220: move test.txt.json.zip1 -> out/test.txt.json.zip1
+INFO: 2021/11/15 00:18:58 main.go:178: -- File Upload to server --
+INFO: 2021/11/15 00:18:58 main.go:181: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8082/upload
+INFO: 2021/11/15 00:18:58 main.go:182: stdout: Upload successful
+INFO: 2021/11/15 00:18:58 main.go:183: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205   8500   100k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/15 00:18:58 main.go:112: url: http://127.0.0.1:8082/pro/convertToJson
+INFO: 2021/11/15 00:18:58 main.go:113: uploadFile: test.txt
+INFO: 2021/11/15 00:18:58 main.go:120: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/15 00:19:00 main.go:145: Response body: {"outURLs":["http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-00-18-58-UzlxzVf1gIOQNLh1awNw/test.txt.json.pcap0","http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-00-18-58-UzlxzVf1gIOQNLh1awNw/test.txt.json.zip1"],"cmdStatus":{"std":{"out":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-15-00-18-58-UzlxzVf1gIOQNLh1awNw', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-15-00-18-58-UzlxzVf1gIOQNLh1awNw\nprocess start\nprocess end\nmove start\nmove end\n","err":""},"startOK":true,"endOK":true}}
+INFO: 2021/11/15 00:19:00 main.go:149: res: {[http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-00-18-58-UzlxzVf1gIOQNLh1awNw/test.txt.json.pcap0 http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-00-18-58-UzlxzVf1gIOQNLh1awNw/test.txt.json.zip1] {{['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-15-00-18-58-UzlxzVf1gIOQNLh1awNw', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']
+fileserver/upload/test.txt
+fileserver/programOut/convertToJson/2021-11-15-00-18-58-UzlxzVf1gIOQNLh1awNw
+process start
+process end
+move start
+move end
+ } true true}}
+INFO: 2021/11/15 00:19:00 main.go:206: -- Get File from server --
+INFO: 2021/11/15 00:19:00 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-00-18-58-UzlxzVf1gIOQNLh1awNw/test.txt.json.pcap0
+INFO: 2021/11/15 00:19:00 main.go:210: stdout: 
+INFO: 2021/11/15 00:19:00 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0   9500      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/15 00:19:00 main.go:217: -- Move File --
+INFO: 2021/11/15 00:19:00 main.go:220: move test.txt.json.pcap0 -> out/test.txt.json.pcap0
+INFO: 2021/11/15 00:19:00 main.go:206: -- Get File from server --
+INFO: 2021/11/15 00:19:00 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-00-18-58-UzlxzVf1gIOQNLh1awNw/test.txt.json.zip1
+INFO: 2021/11/15 00:19:00 main.go:210: stdout: 
+INFO: 2021/11/15 00:19:00 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/15 00:19:00 main.go:217: -- Move File --
+INFO: 2021/11/15 00:19:00 main.go:220: move test.txt.json.zip1 -> out/test.txt.json.zip1
+INFO: 2021/11/15 00:32:58 main.go:178: -- File Upload to server --
+INFO: 2021/11/15 00:32:58 main.go:181: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8082/upload
+INFO: 2021/11/15 00:32:58 main.go:182: stdout: Upload successful
+INFO: 2021/11/15 00:32:58 main.go:183: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/15 00:32:58 main.go:112: url: http://127.0.0.1:8082/pro/convertToJson
+INFO: 2021/11/15 00:32:58 main.go:113: uploadFile: test.txt
+INFO: 2021/11/15 00:32:58 main.go:120: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/15 00:33:00 main.go:145: Response body: {"outURLs":["http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-00-32-58-OGNlH4jx1ZdAyfUKr263/test.txt.json.pcap0","http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-00-32-58-OGNlH4jx1ZdAyfUKr263/test.txt.json.zip1"],"cmdStatus":{"std":{"out":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-15-00-32-58-OGNlH4jx1ZdAyfUKr263', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-15-00-32-58-OGNlH4jx1ZdAyfUKr263\nprocess start\nprocess end\nmove start\nmove end\n","err":""},"startOK":true,"endOK":true}}
+INFO: 2021/11/15 00:33:00 main.go:149: res: {[http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-00-32-58-OGNlH4jx1ZdAyfUKr263/test.txt.json.pcap0 http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-00-32-58-OGNlH4jx1ZdAyfUKr263/test.txt.json.zip1] {{['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-15-00-32-58-OGNlH4jx1ZdAyfUKr263', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']
+fileserver/upload/test.txt
+fileserver/programOut/convertToJson/2021-11-15-00-32-58-OGNlH4jx1ZdAyfUKr263
+process start
+process end
+move start
+move end
+ } true true}}
+INFO: 2021/11/15 00:33:00 main.go:206: -- Get File from server --
+INFO: 2021/11/15 00:33:00 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-00-32-58-OGNlH4jx1ZdAyfUKr263/test.txt.json.pcap0
+INFO: 2021/11/15 00:33:00 main.go:210: stdout: 
+INFO: 2021/11/15 00:33:00 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/15 00:33:00 main.go:217: -- Move File --
+INFO: 2021/11/15 00:33:00 main.go:220: move test.txt.json.pcap0 -> out/test.txt.json.pcap0
+INFO: 2021/11/15 00:33:00 main.go:206: -- Get File from server --
+INFO: 2021/11/15 00:33:00 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-00-32-58-OGNlH4jx1ZdAyfUKr263/test.txt.json.zip1
+INFO: 2021/11/15 00:33:00 main.go:210: stdout: 
+INFO: 2021/11/15 00:33:00 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/15 00:33:00 main.go:217: -- Move File --
+INFO: 2021/11/15 00:33:00 main.go:220: move test.txt.json.zip1 -> out/test.txt.json.zip1
+INFO: 2021/11/15 01:12:38 main.go:178: -- File Upload to server --
+INFO: 2021/11/15 01:12:38 main.go:181: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8082/upload
+INFO: 2021/11/15 01:12:38 main.go:182: stdout: Upload successful
+INFO: 2021/11/15 01:12:38 main.go:183: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/15 01:12:38 main.go:112: url: http://127.0.0.1:8082/pro/convertToJson
+INFO: 2021/11/15 01:12:38 main.go:113: uploadFile: test.txt
+INFO: 2021/11/15 01:12:38 main.go:120: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/15 01:12:41 main.go:145: Response body: {"outURLs":["http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-01-12-38-qThwnqx5v3NTyBsCSstt/test.txt.json.pcap0","http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-01-12-38-qThwnqx5v3NTyBsCSstt/test.txt.json.zip1"],"cmdStatus":{"std":{"out":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-15-01-12-38-qThwnqx5v3NTyBsCSstt', 'programs/convertToJson/config.json', '']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-15-01-12-38-qThwnqx5v3NTyBsCSstt\nprocess start\nprocess end\nmove start\nmove end\n","err":""},"startOK":true,"endOK":true}}
+INFO: 2021/11/15 01:12:41 main.go:149: res: {[http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-01-12-38-qThwnqx5v3NTyBsCSstt/test.txt.json.pcap0 http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-01-12-38-qThwnqx5v3NTyBsCSstt/test.txt.json.zip1] {{['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-15-01-12-38-qThwnqx5v3NTyBsCSstt', 'programs/convertToJson/config.json', '']
+fileserver/upload/test.txt
+fileserver/programOut/convertToJson/2021-11-15-01-12-38-qThwnqx5v3NTyBsCSstt
+process start
+process end
+move start
+move end
+ } true true}}
+INFO: 2021/11/15 01:12:41 main.go:206: -- Get File from server --
+INFO: 2021/11/15 01:12:41 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-01-12-38-qThwnqx5v3NTyBsCSstt/test.txt.json.pcap0
+INFO: 2021/11/15 01:12:41 main.go:210: stdout: 
+INFO: 2021/11/15 01:12:41 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0   9500      0 --:--:-- --:--:-- --:--:--  9500
+
+INFO: 2021/11/15 01:12:41 main.go:217: -- Move File --
+INFO: 2021/11/15 01:12:41 main.go:220: move test.txt.json.pcap0 -> out/test.txt.json.pcap0
+INFO: 2021/11/15 01:12:41 main.go:206: -- Get File from server --
+INFO: 2021/11/15 01:12:41 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-01-12-38-qThwnqx5v3NTyBsCSstt/test.txt.json.zip1
+INFO: 2021/11/15 01:12:41 main.go:210: stdout: 
+INFO: 2021/11/15 01:12:41 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/15 01:12:41 main.go:217: -- Move File --
+INFO: 2021/11/15 01:12:41 main.go:220: move test.txt.json.zip1 -> out/test.txt.json.zip1
+INFO: 2021/11/15 01:13:25 main.go:178: -- File Upload to server --
+INFO: 2021/11/15 01:13:25 main.go:181: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8082/upload
+INFO: 2021/11/15 01:13:25 main.go:182: stdout: Upload successful
+INFO: 2021/11/15 01:13:25 main.go:183: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/15 01:13:25 main.go:112: url: http://127.0.0.1:8082/pro/convertToJson
+INFO: 2021/11/15 01:13:25 main.go:113: uploadFile: test.txt
+INFO: 2021/11/15 01:13:25 main.go:120: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/15 01:13:25 main.go:201: Post "http://127.0.0.1:8082/pro/convertToJson": EOF
+INFO: 2021/11/15 06:41:43 main.go:178: -- File Upload to server --
+INFO: 2021/11/15 06:41:43 main.go:181: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8082/upload
+INFO: 2021/11/15 06:41:43 main.go:182: stdout: Upload successful
+INFO: 2021/11/15 06:41:43 main.go:183: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205   8500   100k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/15 06:41:43 main.go:112: url: http://127.0.0.1:8082/pro/convertToJson
+INFO: 2021/11/15 06:41:43 main.go:113: uploadFile: test.txt
+INFO: 2021/11/15 06:41:43 main.go:120: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/15 06:41:46 main.go:145: Response body: {"outURLs":["http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-06-41-43-TygiBmPq2KpDeqRHADrS/test.txt.json.pcap0","http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-06-41-43-TygiBmPq2KpDeqRHADrS/test.txt.json.zip1"],"cmdStatus":{"std":{"out":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-15-06-41-43-TygiBmPq2KpDeqRHADrS', 'programs/convertToJson/config.json', '']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-15-06-41-43-TygiBmPq2KpDeqRHADrS\nprocess start\nprocess end\nmove start\nmove end\n","err":""},"startOK":true,"endOK":true}}
+INFO: 2021/11/15 06:41:46 main.go:149: res: {[http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-06-41-43-TygiBmPq2KpDeqRHADrS/test.txt.json.pcap0 http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-06-41-43-TygiBmPq2KpDeqRHADrS/test.txt.json.zip1] {{['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-15-06-41-43-TygiBmPq2KpDeqRHADrS', 'programs/convertToJson/config.json', '']
+fileserver/upload/test.txt
+fileserver/programOut/convertToJson/2021-11-15-06-41-43-TygiBmPq2KpDeqRHADrS
+process start
+process end
+move start
+move end
+ } true true}}
+INFO: 2021/11/15 06:41:46 main.go:206: -- Get File from server --
+INFO: 2021/11/15 06:41:46 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-06-41-43-TygiBmPq2KpDeqRHADrS/test.txt.json.pcap0
+INFO: 2021/11/15 06:41:46 main.go:210: stdout: 
+INFO: 2021/11/15 06:41:46 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/15 06:41:46 main.go:217: -- Move File --
+INFO: 2021/11/15 06:41:46 main.go:220: move test.txt.json.pcap0 -> out/test.txt.json.pcap0
+INFO: 2021/11/15 06:41:46 main.go:206: -- Get File from server --
+INFO: 2021/11/15 06:41:46 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-06-41-43-TygiBmPq2KpDeqRHADrS/test.txt.json.zip1
+INFO: 2021/11/15 06:41:46 main.go:210: stdout: 
+INFO: 2021/11/15 06:41:46 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/15 06:41:46 main.go:217: -- Move File --
+INFO: 2021/11/15 06:41:46 main.go:220: move test.txt.json.zip1 -> out/test.txt.json.zip1
+INFO: 2021/11/15 06:42:21 main.go:178: -- File Upload to server --
+INFO: 2021/11/15 06:42:21 main.go:181: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8082/upload
+INFO: 2021/11/15 06:42:21 main.go:182: stdout: Upload successful
+INFO: 2021/11/15 06:42:21 main.go:183: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/15 06:42:21 main.go:112: url: http://127.0.0.1:8082/pro/convertToJson
+INFO: 2021/11/15 06:42:21 main.go:113: uploadFile: test.txt
+INFO: 2021/11/15 06:42:21 main.go:120: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/15 06:42:23 main.go:145: Response body: {"outURLs":["http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-06-42-21-84mSx0ABSKZgWQn4dJCJ/test.txt.json.pcap0","http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-06-42-21-84mSx0ABSKZgWQn4dJCJ/test.txt.json.zip1"],"cmdStatus":{"std":{"out":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-15-06-42-21-84mSx0ABSKZgWQn4dJCJ', 'programs/convertToJson/config.json', '']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-15-06-42-21-84mSx0ABSKZgWQn4dJCJ\nprocess start\nprocess end\nmove start\nmove end\n","err":""},"startOK":true,"endOK":true}}
+INFO: 2021/11/15 06:42:23 main.go:149: res: {[http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-06-42-21-84mSx0ABSKZgWQn4dJCJ/test.txt.json.pcap0 http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-06-42-21-84mSx0ABSKZgWQn4dJCJ/test.txt.json.zip1] {{['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-15-06-42-21-84mSx0ABSKZgWQn4dJCJ', 'programs/convertToJson/config.json', '']
+fileserver/upload/test.txt
+fileserver/programOut/convertToJson/2021-11-15-06-42-21-84mSx0ABSKZgWQn4dJCJ
+process start
+process end
+move start
+move end
+ } true true}}
+INFO: 2021/11/15 06:42:23 main.go:206: -- Get File from server --
+INFO: 2021/11/15 06:42:23 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-06-42-21-84mSx0ABSKZgWQn4dJCJ/test.txt.json.pcap0
+INFO: 2021/11/15 06:42:23 main.go:210: stdout: 
+INFO: 2021/11/15 06:42:23 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/15 06:42:23 main.go:217: -- Move File --
+INFO: 2021/11/15 06:42:23 main.go:220: move test.txt.json.pcap0 -> out/test.txt.json.pcap0
+INFO: 2021/11/15 06:42:23 main.go:206: -- Get File from server --
+INFO: 2021/11/15 06:42:23 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-06-42-21-84mSx0ABSKZgWQn4dJCJ/test.txt.json.zip1
+INFO: 2021/11/15 06:42:23 main.go:210: stdout: 
+INFO: 2021/11/15 06:42:23 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/15 06:42:23 main.go:217: -- Move File --
+INFO: 2021/11/15 06:42:23 main.go:220: move test.txt.json.zip1 -> out/test.txt.json.zip1
+INFO: 2021/11/15 06:44:58 main.go:178: -- File Upload to server --
+INFO: 2021/11/15 06:44:58 main.go:181: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8082/upload
+INFO: 2021/11/15 06:44:58 main.go:182: stdout: Upload successful
+INFO: 2021/11/15 06:44:58 main.go:183: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/15 06:44:58 main.go:112: url: http://127.0.0.1:8082/pro/convertToJson
+INFO: 2021/11/15 06:44:58 main.go:113: uploadFile: test.txt
+INFO: 2021/11/15 06:44:58 main.go:120: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/15 06:45:01 main.go:145: Response body: {"outURLs":["http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-06-44-58-cJcCwtjGmr16ySxct2KI/test.txt.json.pcap0","http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-06-44-58-cJcCwtjGmr16ySxct2KI/test.txt.json.zip1"],"cmdStatus":{"std":{"out":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-15-06-44-58-cJcCwtjGmr16ySxct2KI', 'programs/convertToJson/config.json', '']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-15-06-44-58-cJcCwtjGmr16ySxct2KI\nprocess start\nprocess end\nmove start\nmove end\n","err":""},"startOK":true,"endOK":true}}
+INFO: 2021/11/15 06:45:01 main.go:149: res: {[http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-06-44-58-cJcCwtjGmr16ySxct2KI/test.txt.json.pcap0 http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-06-44-58-cJcCwtjGmr16ySxct2KI/test.txt.json.zip1] {{['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-15-06-44-58-cJcCwtjGmr16ySxct2KI', 'programs/convertToJson/config.json', '']
+fileserver/upload/test.txt
+fileserver/programOut/convertToJson/2021-11-15-06-44-58-cJcCwtjGmr16ySxct2KI
+process start
+process end
+move start
+move end
+ } true true}}
+INFO: 2021/11/15 06:45:01 main.go:206: -- Get File from server --
+INFO: 2021/11/15 06:45:01 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-06-44-58-cJcCwtjGmr16ySxct2KI/test.txt.json.pcap0
+INFO: 2021/11/15 06:45:01 main.go:210: stdout: 
+INFO: 2021/11/15 06:45:01 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0   9500      0 --:--:-- --:--:-- --:--:--  9500
+
+INFO: 2021/11/15 06:45:01 main.go:217: -- Move File --
+INFO: 2021/11/15 06:45:01 main.go:220: move test.txt.json.pcap0 -> out/test.txt.json.pcap0
+INFO: 2021/11/15 06:45:01 main.go:206: -- Get File from server --
+INFO: 2021/11/15 06:45:01 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-06-44-58-cJcCwtjGmr16ySxct2KI/test.txt.json.zip1
+INFO: 2021/11/15 06:45:01 main.go:210: stdout: 
+INFO: 2021/11/15 06:45:01 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/15 06:45:01 main.go:217: -- Move File --
+INFO: 2021/11/15 06:45:01 main.go:220: move test.txt.json.zip1 -> out/test.txt.json.zip1
+INFO: 2021/11/15 10:34:21 main.go:178: -- File Upload to server --
+INFO: 2021/11/15 10:34:21 main.go:181: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8082/upload
+INFO: 2021/11/15 10:34:21 main.go:182: stdout: Upload successful
+INFO: 2021/11/15 10:34:21 main.go:183: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/15 10:34:21 main.go:112: url: http://127.0.0.1:8082/pro/convertToJson
+INFO: 2021/11/15 10:34:21 main.go:113: uploadFile: test.txt
+INFO: 2021/11/15 10:34:21 main.go:120: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/15 10:34:23 main.go:145: Response body: {"outURLs":["http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-10-34-21-i7C7Re8up9U7TnJV4avh/test.txt.json.pcap0","http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-10-34-21-i7C7Re8up9U7TnJV4avh/test.txt.json.zip1"],"cmdStatus":{"std":{"out":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-15-10-34-21-i7C7Re8up9U7TnJV4avh', 'programs/convertToJson/config.json', '']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-15-10-34-21-i7C7Re8up9U7TnJV4avh\nprocess start\nprocess end\nmove start\nmove end\n","err":""},"startOK":true,"endOK":true}}
+INFO: 2021/11/15 10:34:23 main.go:149: res: {[http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-10-34-21-i7C7Re8up9U7TnJV4avh/test.txt.json.pcap0 http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-10-34-21-i7C7Re8up9U7TnJV4avh/test.txt.json.zip1] {{['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-15-10-34-21-i7C7Re8up9U7TnJV4avh', 'programs/convertToJson/config.json', '']
+fileserver/upload/test.txt
+fileserver/programOut/convertToJson/2021-11-15-10-34-21-i7C7Re8up9U7TnJV4avh
+process start
+process end
+move start
+move end
+ } true true}}
+INFO: 2021/11/15 10:34:23 main.go:206: -- Get File from server --
+INFO: 2021/11/15 10:34:23 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-10-34-21-i7C7Re8up9U7TnJV4avh/test.txt.json.pcap0
+INFO: 2021/11/15 10:34:23 main.go:210: stdout: 
+INFO: 2021/11/15 10:34:23 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0   9500      0 --:--:-- --:--:-- --:--:--  9500
+
+INFO: 2021/11/15 10:34:23 main.go:217: -- Move File --
+INFO: 2021/11/15 10:34:23 main.go:220: move test.txt.json.pcap0 -> out/test.txt.json.pcap0
+INFO: 2021/11/15 10:34:23 main.go:206: -- Get File from server --
+INFO: 2021/11/15 10:34:23 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-10-34-21-i7C7Re8up9U7TnJV4avh/test.txt.json.zip1
+INFO: 2021/11/15 10:34:23 main.go:210: stdout: 
+INFO: 2021/11/15 10:34:23 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/15 10:34:23 main.go:217: -- Move File --
+INFO: 2021/11/15 10:34:23 main.go:220: move test.txt.json.zip1 -> out/test.txt.json.zip1
+INFO: 2021/11/15 10:38:22 main.go:178: -- File Upload to server --
+INFO: 2021/11/15 10:38:22 main.go:181: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8082/upload
+INFO: 2021/11/15 10:38:22 main.go:182: stdout: Upload successful
+INFO: 2021/11/15 10:38:22 main.go:183: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/15 10:38:22 main.go:112: url: http://127.0.0.1:8082/pro/convertToJson
+INFO: 2021/11/15 10:38:22 main.go:113: uploadFile: test.txt
+INFO: 2021/11/15 10:38:22 main.go:120: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/15 10:38:25 main.go:145: Response body: {"outURLs":["http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-10-38-22-uAcNbJPP36ntSVQTSofk/test.txt.json.pcap0","http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-10-38-22-uAcNbJPP36ntSVQTSofk/test.txt.json.zip1"],"cmdStatus":{"std":{"out":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-15-10-38-22-uAcNbJPP36ntSVQTSofk', 'programs/convertToJson/config.json', '']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-15-10-38-22-uAcNbJPP36ntSVQTSofk\nprocess start\nprocess end\nmove start\nmove end\n","err":""},"startOK":true,"endOK":true}}
+INFO: 2021/11/15 10:38:25 main.go:149: res: {[http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-10-38-22-uAcNbJPP36ntSVQTSofk/test.txt.json.pcap0 http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-10-38-22-uAcNbJPP36ntSVQTSofk/test.txt.json.zip1] {{['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-15-10-38-22-uAcNbJPP36ntSVQTSofk', 'programs/convertToJson/config.json', '']
+fileserver/upload/test.txt
+fileserver/programOut/convertToJson/2021-11-15-10-38-22-uAcNbJPP36ntSVQTSofk
+process start
+process end
+move start
+move end
+ } true true}}
+INFO: 2021/11/15 10:38:25 main.go:206: -- Get File from server --
+INFO: 2021/11/15 10:38:25 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-10-38-22-uAcNbJPP36ntSVQTSofk/test.txt.json.pcap0
+INFO: 2021/11/15 10:38:25 main.go:210: stdout: 
+INFO: 2021/11/15 10:38:25 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0   9500      0 --:--:-- --:--:-- --:--:--  9500
+
+INFO: 2021/11/15 10:38:25 main.go:217: -- Move File --
+INFO: 2021/11/15 10:38:25 main.go:220: move test.txt.json.pcap0 -> out/test.txt.json.pcap0
+INFO: 2021/11/15 10:38:25 main.go:206: -- Get File from server --
+INFO: 2021/11/15 10:38:25 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-10-38-22-uAcNbJPP36ntSVQTSofk/test.txt.json.zip1
+INFO: 2021/11/15 10:38:25 main.go:210: stdout: 
+INFO: 2021/11/15 10:38:25 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/15 10:38:25 main.go:217: -- Move File --
+INFO: 2021/11/15 10:38:25 main.go:220: move test.txt.json.zip1 -> out/test.txt.json.zip1
+INFO: 2021/11/15 15:59:51 main.go:178: -- File Upload to server --
+INFO: 2021/11/15 15:59:51 main.go:181: commands: curl -X POST -F file=@test.txt http://127.0.0.1:8082/upload
+INFO: 2021/11/15 15:59:51 main.go:182: stdout: Upload successful
+INFO: 2021/11/15 15:59:51 main.go:183: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100    17  100   205  17000   200k --:--:-- --:--:-- --:--:--  216k
+
+INFO: 2021/11/15 15:59:51 main.go:112: url: http://127.0.0.1:8082/pro/convertToJson
+INFO: 2021/11/15 15:59:51 main.go:113: uploadFile: test.txt
+INFO: 2021/11/15 15:59:51 main.go:120: requestBody: {"filename":"test.txt","parameta":"-s ss -d dd"}
+INFO: 2021/11/15 15:59:53 main.go:145: Response body: {"outURLs":["http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-15-59-51-uLI3YXJ1icOxXmmbR4bE/test.txt.json.pcap0","http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-15-59-51-uLI3YXJ1icOxXmmbR4bE/test.txt.json.zip1"],"stdout":"['programs/convertToJson/convert_json.py', 'fileserver/upload/test.txt', 'fileserver/programOut/convertToJson/2021-11-15-15-59-51-uLI3YXJ1icOxXmmbR4bE', 'programs/convertToJson/config.json', '-s', 'ss', '-d', 'dd']\nfileserver/upload/test.txt\nfileserver/programOut/convertToJson/2021-11-15-15-59-51-uLI3YXJ1icOxXmmbR4bE\nprocess start\nprocess end\nmove start\nmove end\n","stderr":"","startOK":true,"endOK":true}
+INFO: 2021/11/15 15:59:53 main.go:149: res: {[http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-15-59-51-uLI3YXJ1icOxXmmbR4bE/test.txt.json.pcap0 http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-15-59-51-uLI3YXJ1icOxXmmbR4bE/test.txt.json.zip1] {{ } false false}}
+INFO: 2021/11/15 15:59:53 main.go:206: -- Get File from server --
+INFO: 2021/11/15 15:59:53 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-15-59-51-uLI3YXJ1icOxXmmbR4bE/test.txt.json.pcap0
+INFO: 2021/11/15 15:59:53 main.go:210: stdout: 
+INFO: 2021/11/15 15:59:53 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0   9500      0 --:--:-- --:--:-- --:--:--  9500
+
+INFO: 2021/11/15 15:59:53 main.go:217: -- Move File --
+INFO: 2021/11/15 15:59:53 main.go:220: move test.txt.json.pcap0 -> out/test.txt.json.pcap0
+INFO: 2021/11/15 15:59:53 main.go:206: -- Get File from server --
+INFO: 2021/11/15 15:59:53 main.go:209: commands: curl -OL http://localhost:8082/fileserver/programOut/convertToJson/2021-11-15-15-59-51-uLI3YXJ1icOxXmmbR4bE/test.txt.json.zip1
+INFO: 2021/11/15 15:59:53 main.go:210: stdout: 
+INFO: 2021/11/15 15:59:53 main.go:211: stderr:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+
+INFO: 2021/11/15 15:59:53 main.go:217: -- Move File --
+INFO: 2021/11/15 15:59:53 main.go:220: move test.txt.json.zip1 -> out/test.txt.json.zip1
