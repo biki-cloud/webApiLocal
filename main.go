@@ -15,17 +15,19 @@ import (
 	"strings"
 )
 
+// OutputInfo はコマンド実行の結果を格納する。
 type OutputInfo struct {
-	OutputURLs []string `json:"outURLs"`
+	StaTus string `json:"status"`
 	Stdout string `json:"stdout"`
 	Stderr string `json:"stderr"`
-	Startok bool `json:"startOK"`
-	Endok bool `json:"endOK"`
+	OutputURLs []string `json:"outURLs"`
 }
+
 // NullWriter は何も書かない
 // これをloggerのSetOutputにセットしたらログを吐かない
 type NullWriter int
-func (NullWriter) Write([]byte) (int, error) {return 0, nil}
+
+func (NullWriter) Write([]byte) (int, error) { return 0, nil }
 
 // GetLogger はファイル名を入れてロガーを返す関数
 // loggerFlagがfalseならログは書かない。
@@ -51,7 +53,6 @@ func GetLogger(filename string, loggerFlag bool) *log.Logger {
 
 	return myLogger
 }
-
 
 // Exec は実行するためのコマンドをもらい、実行し、stdout, stderr, errを返す
 func Exec(command string) (stdoutStr string, stderrStr string, cmderr error) {
@@ -85,11 +86,11 @@ type RequestBody struct {
 
 //ResponseBody はプロセスがサーバの中で走り、その結果を受け取るための構造体
 type ResponseBody struct {
-	OutPathURLs []string `json:"outURLs"`
-	StdOut string `json:"stdout"`
-	StdErr string `json:"stderr"`
-	CmdStartSuccess bool `json:"cmdStartSuccess"`
-	CmdEndSuccess bool `json:"cmdEndSuccess"`
+	OutPathURLs     []string `json:"outURLs"`
+	StdOut          string   `json:"stdout"`
+	StdErr          string   `json:"stderr"`
+	CmdStartSuccess bool     `json:"cmdStartSuccess"`
+	CmdEndSuccess   bool     `json:"cmdEndSuccess"`
 }
 
 // processFileOnServerはサーバにアップロードしたファイルを処理させる。
@@ -136,26 +137,43 @@ func processFileOnServer(url string, uploadedFile string, parameta string, myLog
 	}
 	myLogger.Printf("res: %v\n", res)
 
-	return res, err
+	if res.OutputURLs == nil {
+		res.OutputURLs = []string{}
+	}
 
+	return res, err
 }
 
 func main() {
 	// example -> go run main.go -url http://127.0.0.1:8081 -name convertToJson -i test.txt -o ./out -p "-s ss -d dd" -l
 	var (
-		baseURL       string
-		proName string
+		baseURL   string
+		proName   string
 		inputFile string
 		outputDir string
-		parameta string
-		LogFlag bool
+		parameta  string
+		LogFlag   bool
+		outJSONFLAG bool
 	)
-	flag.StringVar(&baseURL, "url", "localhost:8081", "please url")
-	flag.StringVar(&proName, "name", "default program name", "please program name")
-	flag.StringVar(&inputFile, "i", "default in file", "please input file")
-	flag.StringVar(&outputDir, "o", "default out dir", "please output dir")
-	flag.StringVar(&parameta, "p", "default parameta", "please parameta")
-	flag.BoolVar(&LogFlag, "l", false, "please log flag")
+	flag.StringVar(&baseURL, "url", "", "サーバのURLを指定してください。例 -> -url http://127.0.0.1:8082")
+	flag.StringVar(&proName, "name", "allみたいな感じにしてその場合はプログラム一覧を出してもいい。", "登録プログラムの名称を入れてください。例 -> -name convertToJson")
+	flag.StringVar(&inputFile, "i", "", "登録プログラムに処理させる入力ファイルのパスを指定してください。例 -> -i ./input/test.txt")
+	flag.StringVar(&outputDir, "o", "", "登録プログラムの出力ファイルを出力するディレクトリを指定してください。例 -> -o ./proOut")
+	flag.StringVar(&parameta, "p", "", `登録プログラムに使用するパラメータを指定してください。例 -> -p "-name mike"`)
+	flag.BoolVar(&LogFlag, "l", false, "-lを付与すると詳細なログを出力します。通常は使用しません。")
+	jsonExample := `
+	{
+		"status": "program timeout or program error or server error or ok",
+		"stdout": "作成プログラムの標準出力",
+		"stderr": "作成プログラムの標準エラー出力",
+		"outURLs": [作成プログラムの出力ファイルのURLのリスト(この値は気にしなくて大丈夫です。)]
+	}
+	program timeout -> 作成プログラムがサーバー内で実行された際にタイムアウトになった場合
+	program error   -> 作成プログラムがサーバー内で実行された際にエラーになった場合
+	server error    -> サーバー内のプログラムがエラーを起こした場合
+	ok              -> エラーを起こさなかった場合
+	`
+	flag.BoolVar(&outJSONFLAG, "j", false, "-j を付与するとコマンド結果の出力がJSON形式になり、次のように出力します。" + jsonExample)
 
 	flag.Parse()
 
@@ -178,9 +196,19 @@ func main() {
 	basename := filepath.Base(inputFile)
 	proURL := baseURL + "/pro/" + proName
 	res, err := processFileOnServer(proURL, basename, parameta, myLogger)
-	fmt.Println(res.Stdout)
-	fmt.Println(res.Stderr)
+	if outJSONFLAG {
+		b, err := json.MarshalIndent(res, "", "  ")
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Print(string(b))
+	} else {
+		fmt.Println(res.Stdout)
+		fmt.Println(res.Stderr)
+	}
+
 	if err != nil {
+		fmt.Println("err occur")
 		myLogger.Fatalln(err)
 	}
 
