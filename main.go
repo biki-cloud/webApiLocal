@@ -156,7 +156,7 @@ func main() {
 		outJSONFLAG bool
 	)
 	flag.StringVar(&baseURL, "url", "", "サーバのURLを指定してください。例 -> -url http://127.0.0.1:8082")
-	flag.StringVar(&proName, "name", "allみたいな感じにしてその場合はプログラム一覧を出してもいい。", "登録プログラムの名称を入れてください。例 -> -name convertToJson")
+	flag.StringVar(&proName, "name", "", "登録プログラムの名称を入れてください。登録されているプログラムは-aで参照できます。例 -> -name convertToJson")
 	flag.StringVar(&inputFile, "i", "", "登録プログラムに処理させる入力ファイルのパスを指定してください。例 -> -i ./input/test.txt")
 	flag.StringVar(&outputDir, "o", "", "登録プログラムの出力ファイルを出力するディレクトリを指定してください。例 -> -o ./proOut")
 	flag.StringVar(&parameta, "p", "", `登録プログラムに使用するパラメータを指定してください。例 -> -p "-name mike"`)
