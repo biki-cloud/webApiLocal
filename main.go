@@ -12,7 +12,9 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strconv"
 	"strings"
+	"sync"
 )
 
 // OutputInfo はコマンド実行の結果を格納する。
@@ -144,8 +146,35 @@ func processFileOnServer(url string, uploadedFile string, parameta string, myLog
 	return res, err
 }
 
+func download(downloadURL, outputDir string, done chan error, wg *sync.WaitGroup){
+	defer wg.Done()   // 関数終了時にデクリメント
+	fmt.Println("download in")
+	fmt.Println("-- Get File from server --")
+	command := "curl -OL " + downloadURL
+	stdout, stderr, err := Exec(command)
+	fmt.Printf("commands: %v\n", command)
+	fmt.Printf("stdout: %v\n", stdout)
+	fmt.Printf("stderr: %v\n", stderr)
+	if err != nil {
+		done <- err
+		return
+	}
+
+	// 引数で指定された出力ディレクトリに移動させる
+	fmt.Println("-- Move File --")
+	basename := filepath.Base(downloadURL)
+	newLocation := filepath.Join(outputDir, basename)
+	fmt.Printf("move %v -> %v\n", basename, newLocation)
+	err = os.Rename(basename, newLocation)
+	if err != nil {
+		done <- err
+		return
+	}
+	done <- nil
+	return
+}
+
 func main() {
-	// example -> go run main.go -url http://127.0.0.1:8081 -name convertToJson -i test.txt -o ./out -p "-s ss -d dd" -l
 	var (
 		baseURL   string
 		proName   string
@@ -159,7 +188,8 @@ func main() {
 	flag.StringVar(&proName, "name", "", "登録プログラムの名称を入れてください。登録されているプログラムは-aで参照できます。例 -> -name convertToJson")
 	flag.StringVar(&inputFile, "i", "", "登録プログラムに処理させる入力ファイルのパスを指定してください。例 -> -i ./input/test.txt")
 	flag.StringVar(&outputDir, "o", "", "登録プログラムの出力ファイルを出力するディレクトリを指定してください。例 -> -o ./proOut")
-	flag.StringVar(&parameta, "p", "", `登録プログラムに使用するパラメータを指定してください。例 -> -p "-name mike"`)
+	parametaUsage := "登録プログラムに使用するパラメータを指定してください。例 -> -p " + strconv.Quote("-name mike")
+	flag.StringVar(&parameta, "p", "", parametaUsage)
 	flag.BoolVar(&LogFlag, "l", false, "-lを付与すると詳細なログを出力します。通常は使用しません。")
 	jsonExample := `
 	{
@@ -168,14 +198,27 @@ func main() {
 		"stderr": "作成プログラムの標準エラー出力",
 		"outURLs": [作成プログラムの出力ファイルのURLのリスト(この値は気にしなくて大丈夫です。)]
 	}
-	program timeout -> 作成プログラムがサーバー内で実行された際にタイムアウトになった場合
-	program error   -> 作成プログラムがサーバー内で実行された際にエラーになった場合
+	statusの各項目
+	program timeout -> 登録プログラムがサーバー内で実行された際にタイムアウトになった場合
+	program error   -> 登録プログラムがサーバー内で実行された際にエラーになった場合
 	server error    -> サーバー内のプログラムがエラーを起こした場合
 	ok              -> エラーを起こさなかった場合
 	`
 	flag.BoolVar(&outJSONFLAG, "j", false, "-j を付与するとコマンド結果の出力がJSON形式になり、次のように出力します。" + jsonExample)
 
+	flag.CommandLine.Usage = func() {
+		o := flag.CommandLine.Output()
+		fmt.Fprintf(o, "\nUsage: %s -url <http://IP:PORT> -name <プログラム名> -i <入力ファイル> -o <出力ディレクトリ> -p %v\n", flag.CommandLine.Name(), strconv.Quote("プログラムに渡すパラメータ"))
+		fmt.Fprintf(o, "\nDescription: webサーバに登録してあるプログラムを起動し、サーバ上で処理させ出力を返す。\n例:%s -url <http://127.0.0.1:8082> -name convertToJson -i test.txt -o out -p %v\n \n\nOptions:\n",flag.CommandLine.Name(), strconv.Quote("-s ss -d dd"))
+		flag.PrintDefaults()
+		fmt.Fprintf(o, "\nCreated date 2021.11.21 by morituka. \n\n")
+	}
 	flag.Parse()
+
+	if len(os.Args) == 1 {
+		flag.CommandLine.Usage()
+		os.Exit(2)
+	}
 
 	myLogger := GetLogger("./log.txt", LogFlag)
 
@@ -199,40 +242,34 @@ func main() {
 	if outJSONFLAG {
 		b, err := json.MarshalIndent(res, "", "  ")
 		if err != nil {
-			fmt.Println(err)
+			fmt.Println(err.Error())
 		}
 		fmt.Print(string(b))
 	} else {
 		fmt.Println(res.Stdout)
 		fmt.Println(res.Stderr)
 	}
-
 	if err != nil {
 		fmt.Println("err occur")
 		myLogger.Fatalln(err)
 	}
 
-	// processFileOnServer関数で処理されアウトプットされたファイルをcurlコマンドで取得する
-	for _, getOutFileURL := range res.OutputURLs {
-		myLogger.Println("-- Get File from server --")
-		command := "curl -OL " + getOutFileURL
-		stdout, stderr, err = Exec(command)
-		myLogger.Printf("commands: %v\n", command)
-		myLogger.Printf("stdout: %v\n", stdout)
-		myLogger.Printf("stderr: %v\n", stderr)
-		if err != nil {
-			log.Fatal(err)
-		}
 
-		// 引数で指定された出力ディレクトリに移動させる
-		myLogger.Println("-- Move File --")
-		basename := filepath.Base(getOutFileURL)
-		newLocation := filepath.Join(outputDir, basename)
-		myLogger.Printf("move %v -> %v\n", basename, newLocation)
-		err = os.Rename(basename, newLocation)
-		if err != nil {
-			log.Fatal(err)
+	// サーバ内で出力されたファイルをローカルに取得し、出力ディレクトリへ出力させる
+	done := make(chan error, len(res.OutputURLs))
+	var wg sync.WaitGroup
+	for _, getOutFileURL := range res.OutputURLs {
+		wg.Add(1) // ゴルーチン起動のたびにインクリメント
+		go download(getOutFileURL, outputDir, done, &wg)
+	}
+	wg.Wait() // ゴルーチンでAddしたものが全てDoneされたら次に処理がいく
+	close(done) // ゴルーチンが全て終了したのでチャネルをクローズする。
+
+	for e := range done {
+		if e != nil {
+			fmt.Println(e.Error())
 		}
 	}
+
 
 }
