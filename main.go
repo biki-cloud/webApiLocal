@@ -17,12 +17,13 @@ import (
 	"sync"
 )
 
-// OutputInfo はコマンド実行の結果を格納する。
-type OutputInfo struct {
-	StaTus string `json:"status"`
-	Stdout string `json:"stdout"`
-	Stderr string `json:"stderr"`
+// outputInfo はコマンド実行の結果を格納する。
+type outputInfo struct {
 	OutputURLs []string `json:"outURLs"`
+	Stdout     string   `json:"stdout"`
+	Stderr     string   `json:"stderr"`
+	StaTus     string   `json:"status"`
+	Errormsg string `json:"errmsg"`
 }
 
 // NullWriter は何も書かない
@@ -98,7 +99,7 @@ type ResponseBody struct {
 // processFileOnServerはサーバにアップロードしたファイルを処理させる。
 // サーバのurl, アップロードしたuploadedFile、サーバ上でコマンドを実行するためのparametaを受け取る
 // 返り値はサーバー内で出力したファイルを取得するためのURLパスのリストを返す。
-func processFileOnServer(url string, uploadedFile string, parameta string, myLogger *log.Logger) (OutputInfo, error) {
+func processFileOnServer(url string, uploadedFile string, parameta string, myLogger *log.Logger) (outputInfo, error) {
 
 	myLogger.Printf("url: %v\n", url)
 	myLogger.Printf("uploadFile: %v\n", uploadedFile)
@@ -110,7 +111,7 @@ func processFileOnServer(url string, uploadedFile string, parameta string, myLog
 	requestBody, err := json.Marshal(reqBody)
 	myLogger.Printf("requestBody: %v\n", string(requestBody))
 	if err != nil {
-		return OutputInfo{}, err
+		return outputInfo{}, err
 	}
 
 	body := bytes.NewReader(requestBody)
@@ -118,20 +119,20 @@ func processFileOnServer(url string, uploadedFile string, parameta string, myLog
 	// POSTリクエストを作成
 	req, err := http.NewRequest("POST", url, body)
 	if err != nil {
-		return OutputInfo{}, err
+		return outputInfo{}, err
 	}
 	req.Header.Set("Content-Type", "application/json")
 
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
-		return OutputInfo{}, err
+		return outputInfo{}, err
 	}
 
 	defer resp.Body.Close()
 
 	// レスポンスを受け取り、格納する。
-	var res OutputInfo
+	var res outputInfo
 	b, err := ioutil.ReadAll(resp.Body)
 	myLogger.Printf("Response body: %v\r", string(b))
 	if err := json.Unmarshal(b, &res); err != nil {
