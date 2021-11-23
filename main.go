@@ -204,7 +204,7 @@ func main() {
 	flag.CommandLine.Usage = func() {
 		o := flag.CommandLine.Output()
 		fmt.Fprintf(o, "\nUsage: %s -url <http://IP:PORT> -name <プログラム名> -i <入力ファイル> -o <出力ディレクトリ> -p %v\n", flag.CommandLine.Name(), strconv.Quote("プログラムに渡すパラメータ"))
-		fmt.Fprintf(o, "\nDescription: webサーバに登録してあるプログラムを起動し、サーバ上で処理させ出力を返す。\n例:%s -url <http://127.0.0.1:8082> -name convertToJson -i test.txt -o out -p %v\n \n\nOptions:\n",flag.CommandLine.Name(), strconv.Quote("-s ss -d dd"))
+		fmt.Fprintf(o, "\nDescription: webサーバに登録してあるプログラムを起動し、サーバ上で処理させ出力を返す。\n例:%s -url http://127.0.0.1:8082 -name convertToJson -i test.txt -o out -p %v\n \n\nOptions:\n",flag.CommandLine.Name(), strconv.Quote("-s ss -d dd"))
 		flag.PrintDefaults()
 		fmt.Fprintf(o, "\nCreated date 2021.11.21 by morituka. \n\n")
 	}
