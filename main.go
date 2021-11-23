@@ -148,23 +148,16 @@ func processFileOnServer(url string, uploadedFile string, parameta string, myLog
 
 func download(downloadURL, outputDir string, done chan error, wg *sync.WaitGroup){
 	defer wg.Done()   // 関数終了時にデクリメント
-	fmt.Println("download in")
-	fmt.Println("-- Get File from server --")
 	command := "curl -OL " + downloadURL
-	stdout, stderr, err := Exec(command)
-	fmt.Printf("commands: %v\n", command)
-	fmt.Printf("stdout: %v\n", stdout)
-	fmt.Printf("stderr: %v\n", stderr)
+	_, _, err := Exec(command)
 	if err != nil {
 		done <- err
 		return
 	}
 
 	// 引数で指定された出力ディレクトリに移動させる
-	fmt.Println("-- Move File --")
 	basename := filepath.Base(downloadURL)
 	newLocation := filepath.Join(outputDir, basename)
-	fmt.Printf("move %v -> %v\n", basename, newLocation)
 	err = os.Rename(basename, newLocation)
 	if err != nil {
 		done <- err
@@ -183,6 +176,7 @@ func main() {
 		parameta  string
 		LogFlag   bool
 		outJSONFLAG bool
+		displayAllProgramFlag bool
 	)
 	flag.StringVar(&baseURL, "url", "", "サーバのURLを指定してください。例 -> -url http://127.0.0.1:8082")
 	flag.StringVar(&proName, "name", "", "登録プログラムの名称を入れてください。登録されているプログラムは-aで参照できます。例 -> -name convertToJson")
@@ -191,6 +185,7 @@ func main() {
 	parametaUsage := "登録プログラムに使用するパラメータを指定してください。例 -> -p " + strconv.Quote("-name mike")
 	flag.StringVar(&parameta, "p", "", parametaUsage)
 	flag.BoolVar(&LogFlag, "l", false, "-lを付与すると詳細なログを出力します。通常は使用しません。")
+	flag.BoolVar(&displayAllProgramFlag, "a", false, fmt.Sprintf("-aを付与するとwebサーバに登録されているプログラムのリストを表示します。使用例 -> %s -url <http://IP:PORT> -a", flag.CommandLine.Name()))
 	jsonExample := `
 	{
 		"status": "program timeout or program error or server error or ok",
@@ -220,12 +215,25 @@ func main() {
 		os.Exit(2)
 	}
 
+	if displayAllProgramFlag {
+		command := fmt.Sprintf("curl %v/pro/all", baseURL)
+		stdout, stderr, err := Exec(command)
+		if err != nil {
+			fmt.Println(err.Error())
+		}else if stdout != "" {
+			fmt.Println(stdout)
+		} else {
+			fmt.Println(stderr)
+		}
+		return
+	}
+
 	myLogger := GetLogger("./log.txt", LogFlag)
 
 	// ローカルファイルをサーバーにアップロードする
 	// curl -X POST -F "file=@<ファイル名>" localhost:8080/upload
 	myLogger.Println("-- File Upload to server --")
-	command := "curl -X POST -F file=@" + inputFile + " " + baseURL + "/upload"
+	command := fmt.Sprintf("curl -X POST -F file=@%v %v/upload", inputFile, baseURL)
 	stdout, stderr, err := Exec(command)
 	myLogger.Printf("commands: %v\n", command)
 	myLogger.Printf("stdout: %v\n", stdout)
@@ -237,7 +245,7 @@ func main() {
 	// アップロードしたファイル情報を送信しサーバー上で処理する。
 	// サーバでの実行結果を表示する。
 	basename := filepath.Base(inputFile)
-	proURL := baseURL + "/pro/" + proName
+	proURL := fmt.Sprintf("%v/pro/%v", baseURL, proName)
 	res, err := processFileOnServer(proURL, basename, parameta, myLogger)
 	if outJSONFLAG {
 		b, err := json.MarshalIndent(res, "", "  ")
