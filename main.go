@@ -179,20 +179,21 @@ func main() {
 		outJSONFLAG bool
 		displayAllProgramFlag bool
 	)
-	flag.StringVar(&baseURL, "url", "", "サーバのURLを指定してください。例 -> -url http://127.0.0.1:8082")
-	flag.StringVar(&proName, "name", "", "登録プログラムの名称を入れてください。登録されているプログラムは-aで参照できます。例 -> -name convertToJson")
-	flag.StringVar(&inputFile, "i", "", "登録プログラムに処理させる入力ファイルのパスを指定してください。例 -> -i ./input/test.txt")
-	flag.StringVar(&outputDir, "o", "", "登録プログラムの出力ファイルを出力するディレクトリを指定してください。例 -> -o ./proOut")
-	parametaUsage := "登録プログラムに使用するパラメータを指定してください。例 -> -p " + strconv.Quote("-name mike")
+	flag.StringVar(&baseURL, "url", "", "(required) サーバのURLを指定してください。(必須) 例 -> -url http://127.0.0.1:8082")
+	flag.StringVar(&proName, "name", "", "(required) 登録プログラムの名称を入れてください。(必須) 登録されているプログラムは-aで参照できます。例 -> -name convertToJson")
+	flag.StringVar(&inputFile, "i", "", "(required) 登録プログラムに処理させる入力ファイルのパスを指定してください。(必須) 例 -> -i ./input/test.txt")
+	flag.StringVar(&outputDir, "o", "", "(required) 登録プログラムの出力ファイルを出力するディレクトリを指定してください。(必須) 例 -> -o ./proOut")
+	parametaUsage := "(option) 登録プログラムに使用するパラメータを指定してください。例 -> -p " + strconv.Quote("-name mike")
 	flag.StringVar(&parameta, "p", "", parametaUsage)
-	flag.BoolVar(&LogFlag, "l", false, "-lを付与すると詳細なログを出力します。通常は使用しません。")
-	flag.BoolVar(&displayAllProgramFlag, "a", false, fmt.Sprintf("-aを付与するとwebサーバに登録されているプログラムのリストを表示します。使用例 -> %s -url <http://IP:PORT> -a", flag.CommandLine.Name()))
+	flag.BoolVar(&LogFlag, "l", false, "(option) -lを付与すると詳細なログを出力します。通常は使用しません。")
+	flag.BoolVar(&displayAllProgramFlag, "a", false, fmt.Sprintf("(option) -aを付与するとwebサーバに登録されているプログラムのリストを表示します。-urlでurlの指定も必要。使用例 -> %s -url <http://IP:PORT> -a", flag.CommandLine.Name()))
 	jsonExample := `
 	{
 		"status": "program timeout or program error or server error or ok",
 		"stdout": "作成プログラムの標準出力",
 		"stderr": "作成プログラムの標準エラー出力",
-		"outURLs": [作成プログラムの出力ファイルのURLのリスト(この値は気にしなくて大丈夫です。)]
+		"outURLs": [作成プログラムの出力ファイルのURLのリスト(この値は気にしなくて大丈夫です。)],
+		"errmsg": "サーバ内のプログラムで起きたエラーメッセージ"
 	}
 	statusの各項目
 	program timeout -> 登録プログラムがサーバー内で実行された際にタイムアウトになった場合
@@ -200,18 +201,38 @@ func main() {
 	server error    -> サーバー内のプログラムがエラーを起こした場合
 	ok              -> エラーを起こさなかった場合
 	`
-	flag.BoolVar(&outJSONFLAG, "j", false, "-j を付与するとコマンド結果の出力がJSON形式になり、次のように出力します。" + jsonExample)
+	flag.BoolVar(&outJSONFLAG, "j", false, "(option, but recommend) -j を付与するとコマンド結果の出力がJSON形式になり、次のように出力します。" + jsonExample)
 
 	flag.CommandLine.Usage = func() {
 		o := flag.CommandLine.Output()
-		fmt.Fprintf(o, "\nUsage: %s -url <http://IP:PORT> -name <プログラム名> -i <入力ファイル> -o <出力ディレクトリ> -p %v\n", flag.CommandLine.Name(), strconv.Quote("プログラムに渡すパラメータ"))
+		fmt.Fprintf(o, "\nUsage: %s -url <http://IP:PORT> -name <プログラム名> -i <入力ファイル> -o <出力ディレクトリ>\n", flag.CommandLine.Name())
 		fmt.Fprintf(o, "\nDescription: webサーバに登録してあるプログラムを起動し、サーバ上で処理させ出力を返す。\n例:%s -url http://127.0.0.1:8082 -name convertToJson -i test.txt -o out -p %v\n \n\nOptions:\n",flag.CommandLine.Name(), strconv.Quote("-s ss -d dd"))
 		flag.PrintDefaults()
 		fmt.Fprintf(o, "\nCreated date 2021.11.21 by morituka. \n\n")
 	}
 	flag.Parse()
 
+	isRequiredArgs := baseURL == "" || proName == "" || inputFile == "" || outputDir == ""
+
 	if len(os.Args) == 1 {
+		flag.CommandLine.Usage()
+		os.Exit(2)
+	}
+
+	if displayAllProgramFlag && baseURL == "" {
+		fmt.Println("パラメータが不足しています。")
+		flag.CommandLine.Usage()
+		os.Exit(2)
+	}
+
+	if isRequiredArgs {
+		fmt.Println("必須のパラメータが不足しています。")
+		fmt.Println("-------------------------------------------")
+		fmt.Printf("- url : %v\n", baseURL)
+		fmt.Printf("- name: %v\n", proName)
+		fmt.Printf("- i   : %v\n", inputFile)
+		fmt.Printf("- o   : %v\n", outputDir)
+		fmt.Println("-------------------------------------------")
 		flag.CommandLine.Usage()
 		os.Exit(2)
 	}
