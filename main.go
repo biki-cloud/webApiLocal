@@ -23,7 +23,7 @@ type outputInfo struct {
 	Stdout     string   `json:"stdout"`
 	Stderr     string   `json:"stderr"`
 	StaTus     string   `json:"status"`
-	Errormsg string `json:"errmsg"`
+	Errormsg   string   `json:"errmsg"`
 }
 
 // NullWriter は何も書かない
@@ -147,8 +147,8 @@ func processFileOnServer(url string, uploadedFile string, parameta string, myLog
 	return res, err
 }
 
-func download(downloadURL, outputDir string, done chan error, wg *sync.WaitGroup){
-	defer wg.Done()   // 関数終了時にデクリメント
+func download(downloadURL, outputDir string, done chan error, wg *sync.WaitGroup) {
+	defer wg.Done() // 関数終了時にデクリメント
 	command := "curl -OL " + downloadURL
 	_, _, err := Exec(command)
 	if err != nil {
@@ -170,13 +170,13 @@ func download(downloadURL, outputDir string, done chan error, wg *sync.WaitGroup
 
 func main() {
 	var (
-		baseURL   string
-		proName   string
-		inputFile string
-		outputDir string
-		parameta  string
-		LogFlag   bool
-		outJSONFLAG bool
+		baseURL               string
+		proName               string
+		inputFile             string
+		outputDir             string
+		parameta              string
+		LogFlag               bool
+		outJSONFLAG           bool
 		displayAllProgramFlag bool
 	)
 	flag.StringVar(&baseURL, "url", "", "(required) サーバのURLを指定してください。(必須) 例 -> -url http://127.0.0.1:8082")
@@ -201,12 +201,12 @@ func main() {
 	server error    -> サーバー内のプログラムがエラーを起こした場合
 	ok              -> エラーを起こさなかった場合
 	`
-	flag.BoolVar(&outJSONFLAG, "j", false, "(option, but recommend) -j を付与するとコマンド結果の出力がJSON形式になり、次のように出力します。" + jsonExample)
+	flag.BoolVar(&outJSONFLAG, "j", false, "(option, but recommend) -j を付与するとコマンド結果の出力がJSON形式になり、次のように出力します。"+jsonExample)
 
 	flag.CommandLine.Usage = func() {
 		o := flag.CommandLine.Output()
 		fmt.Fprintf(o, "\nUsage: %s -url <http://IP:PORT> -name <プログラム名> -i <入力ファイル> -o <出力ディレクトリ>\n", flag.CommandLine.Name())
-		fmt.Fprintf(o, "\nDescription: webサーバに登録してあるプログラムを起動し、サーバ上で処理させ出力を返す。\n例:%s -url http://127.0.0.1:8082 -name convertToJson -i test.txt -o out -p %v\n \n\nOptions:\n",flag.CommandLine.Name(), strconv.Quote("-s ss -d dd"))
+		fmt.Fprintf(o, "\nDescription: webサーバに登録してあるプログラムを起動し、サーバ上で処理させ出力を返す。\n例:%s -url http://127.0.0.1:8082 -name convertToJson -i test.txt -o out -p %v\n \n\nOptions:\n", flag.CommandLine.Name(), strconv.Quote("-s ss -d dd"))
 		flag.PrintDefaults()
 		fmt.Fprintf(o, "\nCreated date 2021.11.21 by morituka. \n\n")
 	}
@@ -242,7 +242,7 @@ func main() {
 		stdout, stderr, err := Exec(command)
 		if err != nil {
 			fmt.Println(err.Error())
-		}else if stdout != "" {
+		} else if stdout != "" {
 			fmt.Println(stdout)
 		} else {
 			fmt.Println(stderr)
@@ -284,7 +284,6 @@ func main() {
 		myLogger.Fatalln(err)
 	}
 
-
 	// サーバ内で出力されたファイルをローカルに取得し、出力ディレクトリへ出力させる
 	done := make(chan error, len(res.OutputURLs))
 	var wg sync.WaitGroup
@@ -292,7 +291,7 @@ func main() {
 		wg.Add(1) // ゴルーチン起動のたびにインクリメント
 		go download(getOutFileURL, outputDir, done, &wg)
 	}
-	wg.Wait() // ゴルーチンでAddしたものが全てDoneされたら次に処理がいく
+	wg.Wait()   // ゴルーチンでAddしたものが全てDoneされたら次に処理がいく
 	close(done) // ゴルーチンが全て終了したのでチャネルをクローズする。
 
 	for e := range done {
@@ -300,6 +299,5 @@ func main() {
 			fmt.Println(e.Error())
 		}
 	}
-
 
 }
