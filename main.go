@@ -96,6 +96,17 @@ type ResponseBody struct {
 	CmdEndSuccess   bool     `json:"cmdEndSuccess"`
 }
 
+func fileExists(filename string) bool {
+	if _, err := os.Stat(filename); os.IsNotExist(err) {
+		return false
+	}
+
+	if _, err := os.Stat(filename); !os.IsNotExist(err) {
+		return true
+	}
+	return false
+}
+
 // processFileOnServerはサーバにアップロードしたファイルを処理させる。
 // サーバのurl, アップロードしたuploadedFile、サーバ上でコマンドを実行するためのparametaを受け取る
 // 返り値はサーバー内で出力したファイルを取得するためのURLパスのリストを返す。
@@ -219,6 +230,33 @@ func main() {
 		os.Exit(2)
 	}
 
+	func() {
+		resp, err := http.Get(baseURL+"/fileserver/")
+		if err != nil {
+			fmt.Printf("URLが間違っている可能性があります。URL: %v\n", baseURL)
+			log.Fatalln(err.Error())
+		}
+		defer resp.Body.Close()
+		if resp.StatusCode != http.StatusOK {
+			fmt.Printf("URLが間違っている可能性があります。URL: %v\n", baseURL)
+			os.Exit(2)
+		}
+	}()
+
+	if displayAllProgramFlag {
+		// -a で登録プログラムの内容を確認する。
+		command := fmt.Sprintf("curl %v/pro/all", baseURL)
+		stdout, stderr, err := Exec(command)
+		if err != nil {
+			fmt.Println(err.Error())
+		} else if stdout != "" {
+			fmt.Println(stdout)
+		} else {
+			fmt.Println(stderr)
+		}
+		return
+	}
+
 	if displayAllProgramFlag && baseURL == "" {
 		fmt.Println("パラメータが不足しています。")
 		flag.CommandLine.Usage()
@@ -237,18 +275,17 @@ func main() {
 		os.Exit(2)
 	}
 
-	if displayAllProgramFlag {
-		command := fmt.Sprintf("curl %v/pro/all", baseURL)
-		stdout, stderr, err := Exec(command)
-		if err != nil {
-			fmt.Println(err.Error())
-		} else if stdout != "" {
-			fmt.Println(stdout)
-		} else {
-			fmt.Println(stderr)
-		}
-		return
+	if !fileExists(inputFile) {
+		fmt.Printf("no such file or directory: %v\n", inputFile)
+		os.Exit(2)
 	}
+
+	if !fileExists(outputDir) {
+		fmt.Printf("no such file or directory: %v\n", outputDir)
+		os.Exit(2)
+	}
+
+	
 
 	myLogger := GetLogger("./log.txt", LogFlag)
 
